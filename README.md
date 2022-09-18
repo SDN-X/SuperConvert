@@ -39,4 +39,4 @@ Open your nuget package manager and type the name of 'SuperConvert' on the searc
 
 | Version | README |
 | ------  | ------ |
-| 1.0.0 | [https://github.com/esamelzain/SuperConvert/blob/master/README.md]|
+| 1.0.0 | [https://www.nuget.org/packages/SuperConvert/]|
