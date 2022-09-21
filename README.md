@@ -37,7 +37,7 @@ Install-Package SuperConvert -Version 1.0.0
 
 Open your nuget package manager and type the name of 'SuperConvert' on the search
 
-##Usage 
+## Usage 
 ```cs
 using SuperConvert.Extentions;
 using System.Data;
