@@ -19,7 +19,7 @@ SuperConvert is a tool to convert your data in c#
 
 ## Tech
 
-SuperConvet's code is based on .net technoloy (>6)
+SuperConvet's code is based on .net technology (>6)
 
 - [.Net6] - C# !
 
