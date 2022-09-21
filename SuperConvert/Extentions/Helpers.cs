@@ -10,7 +10,13 @@ namespace SuperConvert.Extentions
 {
     public static class Helpers
     {
-
+        /// <summary>
+        /// Converts from Json List of object to Datatable,  Json must be List of objects 
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="tableName"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public static DataTable JsonToDataTable(string data, string tableName = "")
         {
             DataTable dt = new DataTable(tableName);
@@ -21,7 +27,7 @@ namespace SuperConvert.Extentions
             }
             catch (Exception ex)
             {
-                throw new Exception($"Json value not valid ::: {ex.Message}");
+                throw new Exception($"Json value not valid : Must be List of objects :: {ex.Message}");
             }
             foreach (Dictionary<string, object> row in dictionaryRows)
             {
@@ -42,6 +48,13 @@ namespace SuperConvert.Extentions
             }
             return dt;
         }
+        /// <summary>
+        /// Converts from DataTable to List of object ,Returned Json will be List of objects 
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="tableName"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public static string DataTableToJson(DataTable dataTable)
         {
             string jsonValue = "";
