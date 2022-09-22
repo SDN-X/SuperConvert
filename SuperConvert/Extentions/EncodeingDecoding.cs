@@ -22,7 +22,7 @@ namespace SuperConvert.Extentions
         /// </summary>
         /// <param name="asciiArray"></param>
         /// <returns></returns>
-        public static string ToAsciiList(this int[] asciiArray)
+        public static string AsciiToString(this int[] asciiArray)
         {
             return Helpers.ConvertAsciiToString(asciiArray);
         }
