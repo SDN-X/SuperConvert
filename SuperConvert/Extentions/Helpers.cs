@@ -17,7 +17,7 @@ namespace SuperConvert.Extentions
         /// <param name="tableName"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public static DataTable JsonToDataTable(string data, string tableName = "")
+        internal static DataTable JsonToDataTable(string data, string tableName = "")
         {
             DataTable dt = new DataTable(tableName);
             List<Dictionary<string, object>>? dictionaryRows = new List<Dictionary<string, object>>();
@@ -55,7 +55,7 @@ namespace SuperConvert.Extentions
         /// <param name="tableName"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public static string DataTableToJson(DataTable dataTable)
+        internal static string DataTableToJson(DataTable dataTable)
         {
             string jsonValue = "";
             try
@@ -68,6 +68,26 @@ namespace SuperConvert.Extentions
                 throw new Exception($"DataTable can not be converted to jaon ::: {ex.Message}");
             }
             return jsonValue;
+        }
+
+        internal static int[] ConvertStringToAscii(string textToConvert)
+        {
+            List<int> result = new List<int>();
+            foreach (char character in textToConvert)
+            {
+                result.Add(character);
+            }
+            return (result.ToArray());
+        }
+        internal static string ConvertAsciiToString(int[] asciiArray)
+        {
+            string text = string.Empty;
+            foreach (var asci in asciiArray)
+            {
+                char character = (char)asci;
+                text += character.ToString();
+            }
+            return text;
         }
         /// <summary>
         /// Get Dictionary from datatable
@@ -101,5 +121,7 @@ namespace SuperConvert.Extentions
         {
             return JsonSerializer.Serialize<T>(item);
         }
+
+
     }
 }
