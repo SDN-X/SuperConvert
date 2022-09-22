@@ -17,7 +17,7 @@ namespace SuperConvert.Extentions
         /// <param name="tableName"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public static DataTable JsonToDataTable(string data, string tableName = "")
+        internal static DataTable JsonToDataTable(string data, string tableName = "")
         {
             DataTable dt = new DataTable(tableName);
             List<Dictionary<string, object>>? dictionaryRows = new List<Dictionary<string, object>>();
@@ -55,7 +55,7 @@ namespace SuperConvert.Extentions
         /// <param name="tableName"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public static string DataTableToJson(DataTable dataTable)
+        internal static string DataTableToJson(DataTable dataTable)
         {
             string jsonValue = "";
             try
@@ -69,15 +69,27 @@ namespace SuperConvert.Extentions
             }
             return jsonValue;
         }
+
+        internal static int[] ConvertStringToAscii(string textToConvert)
+        {
+            List<int> result = new List<int>();
+            textToConvert.ToList().ForEach(character => result.Add(character));
+            return result.ToArray();
+        }
+        internal static string ConvertAsciiToString(int[] asciiArray)
+        {
+            string text = string.Empty;
+            asciiArray.ToList().ForEach(ascii => { text += (char)ascii; });
+            return text;
+        }
         /// <summary>
         /// Get Dictionary from datatable
         /// </summary>
         /// <param name="dt"></param>
         /// <returns></returns>
-        private static List<Dictionary<string, object>> GetDictionary(DataTable dt)
-        {
+        private static List<Dictionary<string, object>> GetDictionary(DataTable dt) =>
             // Iterate through the rows...
-            return dt.AsEnumerable().Select(
+            dt.AsEnumerable().Select(
             // ...then iterate through the columns...
             row => dt.Columns.Cast<DataColumn>().ToDictionary(
                            // ...and find the key value pairs for the dictionary
@@ -85,21 +97,13 @@ namespace SuperConvert.Extentions
                            column => row[column]  // Value
                        )
                    ).ToList();
-
-        }
         /// <summary>
         /// Deserialize an from json string
         /// </summary>
-        private static T Deserialize<T>(string body)
-        {
-            return JsonSerializer.Deserialize<T>(body);
-        }
+        private static T Deserialize<T>(string body) => JsonSerializer.Deserialize<T>(body);
         /// <summary>
         /// Serialize an object to json
         /// </summary>
-        private static string Serialize<T>(T item)
-        {
-            return JsonSerializer.Serialize<T>(item);
-        }
+        private static string Serialize<T>(T item) => JsonSerializer.Serialize<T>(item);
     }
 }
