@@ -9,7 +9,7 @@ namespace SuperConvert.Extentions
     public static class EncodeingDecoding
     {
         /// <summary>
-        /// Converting any text to list of ascci numbers int[]
+        /// Converting any text to list of ascii numbers int[]
         /// </summary>
         /// <param name="textToConvert"></param>
         /// <returns></returns>
@@ -17,7 +17,7 @@ namespace SuperConvert.Extentions
                 ? throw new ArgumentNullException("String can not be empty or null!")
                 : Helpers.ConvertStringToAscii(textToConvert);
         /// <summary>
-        /// Converting list of ascci numbers int[] to text string
+        /// Converting list of ascii numbers int[] to text string
         /// </summary>
         /// <param name="asciiArray"></param>
         /// <returns></returns>
