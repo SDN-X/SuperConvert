@@ -73,20 +73,13 @@ namespace SuperConvert.Extentions
         internal static int[] ConvertStringToAscii(string textToConvert)
         {
             List<int> result = new List<int>();
-            foreach (char character in textToConvert)
-            {
-                result.Add(character);
-            }
-            return (result.ToArray());
+            textToConvert.ToList().ForEach(character => result.Add(character));
+            return result.ToArray();
         }
         internal static string ConvertAsciiToString(int[] asciiArray)
         {
             string text = string.Empty;
-            foreach (var asci in asciiArray)
-            {
-                char character = (char)asci;
-                text += character.ToString();
-            }
+            asciiArray.ToList().ForEach(ascii => { text += (char)ascii; });
             return text;
         }
         /// <summary>
@@ -121,7 +114,5 @@ namespace SuperConvert.Extentions
         {
             return JsonSerializer.Serialize<T>(item);
         }
-
-
     }
 }
