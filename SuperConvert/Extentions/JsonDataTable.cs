@@ -12,12 +12,9 @@ namespace SuperConvert.Extentions
         /// <param name="tableName"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public static DataTable ToDataTable(this string jsonString, string tableName = "")
-        {
-            if (string.IsNullOrEmpty(jsonString))
-                throw new ArgumentNullException("String value can not be empty or null!");
-            return Helpers.JsonToDataTable(jsonString, tableName);
-        }
+        public static DataTable ToDataTable(this string jsonString, string tableName = "") => string.IsNullOrEmpty(jsonString)
+                ? throw new ArgumentNullException("String value can not be empty or null!")
+                : Helpers.JsonToDataTable(jsonString, tableName);
         /// <summary>
         /// Converts from DataTable to List of object ,Returned Json will be List of objects 
         /// </summary>
@@ -26,10 +23,6 @@ namespace SuperConvert.Extentions
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
         public static string ToJson(this DataTable dataTable)
-        {
-            if (dataTable == null)
-                throw new ArgumentNullException("DataTable can not be empty or null!");
-            return Helpers.DataTableToJson(dataTable);
-        }
+        => dataTable == null ? throw new ArgumentNullException("DataTable can not be empty or null!") : Helpers.DataTableToJson(dataTable);
     }
 }
