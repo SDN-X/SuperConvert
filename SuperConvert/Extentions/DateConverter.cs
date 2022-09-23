@@ -10,14 +10,12 @@ namespace SuperConvert.Extentions;
 
 public static class DateConverter
 {
-    private static string arLangCulture = "ar-SA";
-    private static string enLangCulture = "en-US";
     public static DateTime GregorianToHijri(DateTime date)
     {
         if (date.Year >= 1900)
         {
-            var result = DateTime.Parse(ConvertDateCalendar(date, Enums.Calender.Hijri, arLangCulture));
-            return result;
+            var result = ConvertDateCalendar(date, Enums.Calender.Hijri);
+            return DateTime.Parse(result);
         }
         return date;
     }
@@ -25,36 +23,35 @@ public static class DateConverter
     {
         if (date.Year < 1900)
         {
-            var result = DateTime.Parse(ConvertDateCalendar(date, Enums.Calender.Gregorian, enLangCulture));
-            return result;
+            var result = ConvertDateCalendar(date, Enums.Calender.Gregorian);
+            return DateTime.Parse(result);
+
+
         }
         return date;
     }
 
 
-    public static string ConvertDateCalendar(DateTime date, Enums.Calender calendar, string dateLangCulture)
+    private static string ConvertDateCalendar(DateTime date, Enums.Calender Calendar)
     {
-        dateLangCulture = dateLangCulture.ToLower();
-
-        if (calendar == Enums.Calender.Hijri && dateLangCulture == enLangCulture)
-            dateLangCulture = arLangCulture;
-
-        DateTimeFormatInfo dateTimeFormatInfo = new CultureInfo(dateLangCulture, false).DateTimeFormat;
-
-        switch (calendar)
+        string result = string.Empty;
+       switch (Calendar)
         {
             case Enums.Calender.Hijri:
-                dateTimeFormatInfo.Calendar = new HijriCalendar();
+                CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                cultureInfo.DateTimeFormat.Calendar = new HijriCalendar();
+                cultureInfo.DateTimeFormat.ShortDatePattern = "yyyy-MM-dd";
+                result = date.ToString("d", cultureInfo);
                 break;
 
             case Enums.Calender.Gregorian:
-                dateTimeFormatInfo.Calendar = new GregorianCalendar();
+                Calendar umAlQuraCalendar = new UmAlQuraCalendar();
+                DateTime dt = new DateTime(date.Year, date.Month, date.Day, umAlQuraCalendar);
+                result = dt.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
                 break;
-
             default:
-                return "";
+                break;
         }
-        dateTimeFormatInfo.ShortDatePattern = "yyyy-MM-dd";
-        return (date.Date.ToString("yyyy-MM-dd", dateTimeFormatInfo));
+        return result;
     }
 }
