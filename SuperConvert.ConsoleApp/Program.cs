@@ -22,6 +22,12 @@ DateTime hijri = DateConverter.GregorianToHijri(timeNow);
 Console.WriteLine($"GregorianToHijri \n {hijri.ToString("dd/MM/yyyy")}\n");
 //HijriToGregorian
 DateTime gregorian = DateConverter.HijriToGregorian(hijri);
-Console.WriteLine($"HijriToGregorian \n {gregorian.ToString("dd/MM/yyyy")}");
-
+Console.WriteLine($"HijriToGregorian \n {gregorian.ToString("dd/MM/yyyy")} \n");
+//Datatble To CSV
+string path = string.Empty;
+string fileName = "DtToExcel";
+Console.WriteLine($"the file {dt.ToCsv(path, fileName)} has been successfully saved\n");
+//Json To CSV
+fileName = "JsonToExcel";
+Console.WriteLine($"the file {json.ToCsv(path, fileName)} has been successfully saved\n");
 Console.ReadLine();
