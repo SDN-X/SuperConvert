@@ -82,6 +82,59 @@ namespace SuperConvert.Extentions
             asciiArray.ToList().ForEach(ascii => { text += (char)ascii; });
             return text;
         }
+
+        #region ExcelConverter
+        /// <summary>
+        /// Converting dataTable To excel
+        /// </summary>
+        /// <param name="dataTable"></param>
+        /// <returns></returns>
+        internal static string DataTableToExcel(DataTable dataTable,string path = "",string fileName= "excel")
+        {
+            var lines = new List<string>();
+
+            string[] columnNames = dataTable.Columns
+                .Cast<DataColumn>()
+                .Select(column => column.ColumnName)
+                .ToArray();
+
+            var header = string.Join(",", columnNames.Select(name => $"\"{name}\""));
+            lines.Add(header);
+
+            var valueLines = dataTable.AsEnumerable()
+                .Select(row => string.Join(",", row.ItemArray.Select(val => $"\"{val}\"")));
+            lines.AddRange(valueLines);
+            string fullPath = Path.Combine(path, $"{fileName}.csv");
+            File.WriteAllLines(fullPath, lines);
+            return fullPath;
+        }
+
+        /// <summary>
+        /// Converting dataTable To excel
+        /// </summary>
+        /// <param name="dataTable"></param>
+        /// <returns></returns>
+        internal static string JsonToExcel(string json, string path = "", string fileName = "excel")
+        {
+            DataTable dataTable = JsonToDataTable(json,fileName);
+            var lines = new List<string>();
+
+            string[] columnNames = dataTable.Columns
+                .Cast<DataColumn>()
+                .Select(column => column.ColumnName)
+                .ToArray();
+
+            var header = string.Join(",", columnNames.Select(name => $"\"{name}\""));
+            lines.Add(header);
+
+            var valueLines = dataTable.AsEnumerable()
+                .Select(row => string.Join(",", row.ItemArray.Select(val => $"\"{val}\"")));
+            lines.AddRange(valueLines);
+            string fullPath = Path.Combine(path, $"{fileName}.csv");
+            File.WriteAllLines(fullPath, lines);
+            return fullPath;
+        }
+        #endregion
         /// <summary>
         /// Get Dictionary from datatable
         /// </summary>
