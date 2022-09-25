@@ -72,6 +72,6 @@ Console.ReadLine();
 ```
 | Version | README |
 | ------  | ------ |
-| 1.0.0 | [https://www.nuget.org/packages/SuperConvert/]|
-| 1.0.1 | [https://www.nuget.org/packages/SuperConvert/]|
-| 1.1.2 | [https://www.nuget.org/packages/SuperConvert/]|
+| 1.0.0 | [https://www.nuget.org/packages/SuperConvert/1.0.0]|
+| 1.0.1 | [https://www.nuget.org/packages/SuperConvert/1.0.1]|
+| 1.1.2 | [https://www.nuget.org/packages/SuperConvert/1.0.2]|
