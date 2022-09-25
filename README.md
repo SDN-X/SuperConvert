@@ -33,7 +33,7 @@ SuperConvet's code is based on .net technology (>6)
 Run the command on your nuget package console .
 
 ```sh
-Install-Package SuperConvert -Version 1.0.1
+Install-Package SuperConvert -Version 1.0.2
 ```
 ## Or 
 
