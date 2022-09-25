@@ -1,8 +1,27 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿//Json to dataTable
+using SuperConvert.Extentions;
+using System.Data;
 
-
-Console.WriteLine(SuperConvert.Extentions.DateConverter.GregorianToHijri(new DateTime(2022,09,23)));
-Console.WriteLine(SuperConvert.Extentions.DateConverter.HijriToGregorian(new DateTime(1444,02,27)));
+string customers = "[{\"CompanayID\":\"k123\",\"Role\":\"Admin\",\"Country\":\"UK\",\"Asset\":\"HD\",\"incident\":null}, {\"CompanayID\":\"k234\",\"Role\":\"User\",\"Country\":\"US\",\"Asset\":\"HD12\",\"incident\":\"abc 1\"}]";
+DataTable dt = customers.ToDataTable("TableName");
+//Printing the Result
+foreach (DataRow row in dt.Rows)
+{
+    foreach (DataColumn column in dt.Columns)
+    {
+        Console.Write($"{column.ColumnName} : {row[column.ColumnName]} \t");
+    }
+    Console.WriteLine("");
+}
+//DataTable to json
+string json = dt.ToJson();
+Console.WriteLine($"\n Json: \n {json} \n");
+//GregorianToHijri
+DateTime timeNow = DateTime.Now;
+DateTime hijri = DateConverter.GregorianToHijri(timeNow);
+Console.WriteLine($"GregorianToHijri \n {hijri.ToString("dd/MM/yyyy")}\n");
+//HijriToGregorian
+DateTime gregorian = DateConverter.HijriToGregorian(hijri);
+Console.WriteLine($"HijriToGregorian \n {gregorian.ToString("dd/MM/yyyy")}");
 
 Console.ReadLine();
