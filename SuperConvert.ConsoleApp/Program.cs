@@ -1,7 +1,7 @@
-﻿//Json to dataTable
-using SuperConvert.Extentions;
+﻿using SuperConvert.Extentions;
 using System.Data;
 
+//Json to dataTable
 string customers = "[{\"CompanayID\":\"k123\",\"Role\":\"Admin\",\"Country\":\"UK\",\"Asset\":\"HD\",\"incident\":null}, {\"CompanayID\":\"k234\",\"Role\":\"User\",\"Country\":\"US\",\"Asset\":\"HD12\",\"incident\":\"abc 1\"}]";
 DataTable dt = customers.ToDataTable("TableName");
 //Printing the Result
