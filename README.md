@@ -80,6 +80,8 @@ string csvPath = dt.ToCsv(path, fileName);
 ## Json To CSV
 ```cs
 fileName = "JsonToExcel";
+path = string.Empty;
+string csvPath = json.ToCsv(path, fileName)
 ```
 ## CSV To Json
 ```cs
