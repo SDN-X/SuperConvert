@@ -47,7 +47,7 @@ Install-Package SuperConvert -Version 1.0.3
 Open your nuget package manager and type the name of 'SuperConvert' on the search
 
 ## Usage 
-##Namespaces
+## Namespaces
 ```cs
 using SuperConvert.Extentions;
 using System.Data;
@@ -84,7 +84,6 @@ Console.WriteLine($"HijriToGregorian \n {gregorian.ToString("dd/MM/yyyy")} \n");
 ```
 ## Excels
 ```cs
-//Datatble To CSV
 string path = string.Empty;
 string fileName = "DtToExcel";
 string csvPath = dt.ToCsv(path, fileName);
