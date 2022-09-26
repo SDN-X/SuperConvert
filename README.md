@@ -28,9 +28,9 @@ SuperConvert is a tool to convert your data in c#
 
 ## Tech
 
-SuperConvet's code is based on .net technology (>6)
+SuperConvet's code is based on .net core technology (netcoreapp3.1, net5.0, net6.0)
 
-- [.Net6] - C# !
+- [.NetCore3.1, .Net5, .Net6] - C# !
 
 - [GitHub Code](https://github.com/SDN-X/SuperConvert) - SuperConvert Project
 
