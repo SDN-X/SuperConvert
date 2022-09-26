@@ -83,17 +83,24 @@ DateTime gregorian = DateConverter.HijriToGregorian(hijri);
 Console.WriteLine($"HijriToGregorian \n {gregorian.ToString("dd/MM/yyyy")} \n");
 ```
 ## Excels
+## Datatable to Csv
 ```cs
 string path = string.Empty;
 string fileName = "DtToExcel";
 string csvPath = dt.ToCsv(path, fileName);
 Console.WriteLine($"the file {csvPath} has been successfully saved\n");
-//Json To CSV
+```
+## Json To CSV
+```cs
 fileName = "JsonToExcel";
 Console.WriteLine($"the file {json.ToCsv(path, fileName)} has been successfully saved\n");
-//CSV To Json
+```
+## CSV To Json
+```cs
 Console.WriteLine($"CSV To Json {ExcelConverter.CsvToJson(csvPath)}\n");
-//CSV To Datatable
+```
+## CSV To Datatable
+```cs
 DataTable csvDt = ExcelConverter.CsvToDataTable(csvPath);
 Console.WriteLine($"CSV To Datatable: \n");
 foreach (DataRow row in csvDt.Rows)
