@@ -40,7 +40,7 @@ SuperConvet's code is based on .net core technology (netcoreapp3.1, net5.0, net6
 Run the command on your nuget package console .
 
 ```sh
-Install-Package SuperConvert -Version 1.0.3
+Install-Package SuperConvert -Version 1.0.3.2
 ```
 ## Or 
 
@@ -93,6 +93,7 @@ DataTable csvDt = ExcelConverter.CsvToDataTable(csvPath);
 ```
 | Version | README |
 | ------  | ------ |
+| 1.0.3.2 | [https://www.nuget.org/packages/SuperConvert/1.0.3.2]|
 | 1.0.3.1 | [https://www.nuget.org/packages/SuperConvert/1.0.3.1]|
 | 1.1.3 | [https://www.nuget.org/packages/SuperConvert/1.0.3]|
 | 1.1.2 | [https://www.nuget.org/packages/SuperConvert/1.0.2]|
