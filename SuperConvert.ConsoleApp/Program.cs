@@ -44,4 +44,13 @@ foreach (DataRow row in csvDt.Rows)
     }
     Console.WriteLine("\n ");
 }
+//string to ascii
+string toAscii = "Hello world";
+var asciiArray = toAscii.ToAsciiArray();
+Console.WriteLine($"string to ascii: ");
+asciiArray.ToList().ForEach(i => Console.Write($"{i} "));
+//ascii to string
+toAscii = asciiArray.AsciiToString();
+Console.WriteLine($"\n\nascii to string: ");
+Console.WriteLine($"{toAscii} \n");
 Console.ReadLine();

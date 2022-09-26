@@ -13,7 +13,7 @@ namespace SuperConvert.Extentions
         /// </summary>
         /// <param name="textToConvert"></param>
         /// <returns></returns>
-        public static int[] ToAsciiList(this string textToConvert) => string.IsNullOrEmpty(textToConvert)
+        public static int[] ToAsciiArray(this string textToConvert) => string.IsNullOrEmpty(textToConvert)
                 ? throw new ArgumentNullException("String can not be empty or null!")
                 : Helpers.ConvertStringToAscii(textToConvert);
         /// <summary>
