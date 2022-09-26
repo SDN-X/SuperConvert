@@ -47,11 +47,13 @@ Install-Package SuperConvert -Version 1.0.3
 Open your nuget package manager and type the name of 'SuperConvert' on the search
 
 ## Usage 
+##Namespaces
 ```cs
 using SuperConvert.Extentions;
 using System.Data;
-
-//Json to dataTable
+```
+## Json to dataTable
+```cs
 string customers = "[{\"CompanayID\":\"k123\",\"Role\":\"Admin\",\"Country\":\"UK\",\"Asset\":\"HD\",\"incident\":null}, {\"CompanayID\":\"k234\",\"Role\":\"User\",\"Country\":\"US\",\"Asset\":\"HD12\",\"incident\":\"abc 1\"}]";
 DataTable dt = customers.ToDataTable("TableName");
 //Printing the Result
@@ -63,16 +65,25 @@ foreach (DataRow row in dt.Rows)
     }
     Console.WriteLine("\n ");
 }
-//DataTable to json
+```
+## DataTable to json
+```cs
 string json = dt.ToJson();
 Console.WriteLine($"Json: \n {json} \n");
-//GregorianToHijri
+```
+## DateTime GregorianToHijri
+```cs
 DateTime timeNow = DateTime.Now;
 DateTime hijri = DateConverter.GregorianToHijri(timeNow);
 Console.WriteLine($"GregorianToHijri \n {hijri.ToString("dd/MM/yyyy")}\n");
-//HijriToGregorian
+```
+## DateTime HijriToGregorian
+```cs
 DateTime gregorian = DateConverter.HijriToGregorian(hijri);
 Console.WriteLine($"HijriToGregorian \n {gregorian.ToString("dd/MM/yyyy")} \n");
+```
+## Excels
+```cs
 //Datatble To CSV
 string path = string.Empty;
 string fileName = "DtToExcel";
