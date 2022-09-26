@@ -13,6 +13,11 @@ namespace SuperConvert
             Gregorian = 1,
             Hijri = 2
         }
-
+        public enum ExcelFileType
+        {
+            CSV = 1,
+            XLS = 2,
+            XLSX = 3
+        }
     }
 }

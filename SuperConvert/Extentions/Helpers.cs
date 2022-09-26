@@ -5,11 +5,13 @@ using System.Linq;
 using System.Text.Json;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace SuperConvert.Extentions
 {
     public static class Helpers
     {
+        #region Json Converters
         /// <summary>
         /// Converts from Json List of object to Datatable,  Json must be List of objects 
         /// </summary>
@@ -69,6 +71,9 @@ namespace SuperConvert.Extentions
             }
             return jsonValue;
         }
+        #endregion
+
+        #region Ascii Converters
 
         internal static int[] ConvertStringToAscii(string textToConvert)
         {
@@ -82,6 +87,7 @@ namespace SuperConvert.Extentions
             asciiArray.ToList().ForEach(ascii => { text += (char)ascii; });
             return text;
         }
+        #endregion
 
         #region ExcelConverter
         /// <summary>
@@ -89,7 +95,7 @@ namespace SuperConvert.Extentions
         /// </summary>
         /// <param name="dataTable"></param>
         /// <returns></returns>
-        internal static string DataTableToExcel(DataTable dataTable,string path = "",string fileName= "excel")
+        internal static string DataTableToExcel(DataTable dataTable, string path, string fileName)
         {
             var lines = new List<string>();
 
@@ -100,23 +106,21 @@ namespace SuperConvert.Extentions
 
             var header = string.Join(",", columnNames.Select(name => $"\"{name}\""));
             lines.Add(header);
-
             var valueLines = dataTable.AsEnumerable()
                 .Select(row => string.Join(",", row.ItemArray.Select(val => $"\"{val}\"")));
             lines.AddRange(valueLines);
-            string fullPath = Path.Combine(path, $"{fileName}.csv");
+            string fullPath = Path.Combine(path, $"{fileName}.xls");
             File.WriteAllLines(fullPath, lines);
             return fullPath;
         }
-
         /// <summary>
         /// Converting dataTable To excel
         /// </summary>
         /// <param name="dataTable"></param>
         /// <returns></returns>
-        internal static string JsonToExcel(string json, string path = "", string fileName = "excel")
+        internal static string JsonToExcel(string json, string path, string fileName)
         {
-            DataTable dataTable = JsonToDataTable(json,fileName);
+            DataTable dataTable = JsonToDataTable(json, fileName);
             var lines = new List<string>();
 
             string[] columnNames = dataTable.Columns
@@ -134,7 +138,37 @@ namespace SuperConvert.Extentions
             File.WriteAllLines(fullPath, lines);
             return fullPath;
         }
+
+        internal static string ConvertCsvToJson(string filePath)
+        {
+            var csv = new List<string[]>();
+            var lines = File.ReadAllLines(filePath);
+
+            foreach (string line in lines)
+                csv.Add(line.Split(','));
+
+            var properties = lines[0].Replace("\"","").Split(',');
+
+            var listObjResult = new List<Dictionary<string, string>>();
+
+            for (int i = 1; i < lines.Length; i++)
+            {
+                var objResult = new Dictionary<string, string>();
+                for (int j = 0; j < properties.Length; j++)
+                    objResult.Add(properties[j], csv[i][j].Replace("\"", ""));
+
+                listObjResult.Add(objResult);
+            }
+
+            return Serialize(listObjResult);
+        }
+
+
+        internal static DataTable ConvertCsvToDatatable(string filePath) =>
+            ConvertCsvToJson(filePath).ToDataTable();
         #endregion
+
+        #region Serializers
         /// <summary>
         /// Get Dictionary from datatable
         /// </summary>
@@ -158,5 +192,6 @@ namespace SuperConvert.Extentions
         /// Serialize an object to json
         /// </summary>
         private static string Serialize<T>(T item) => JsonSerializer.Serialize<T>(item);
+        #endregion
     }
 }

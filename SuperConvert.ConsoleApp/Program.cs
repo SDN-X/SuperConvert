@@ -11,11 +11,11 @@ foreach (DataRow row in dt.Rows)
     {
         Console.Write($"{column.ColumnName} : {row[column.ColumnName]} \t");
     }
-    Console.WriteLine("");
+    Console.WriteLine("\n ");
 }
 //DataTable to json
 string json = dt.ToJson();
-Console.WriteLine($"\n Json: \n {json} \n");
+Console.WriteLine($"Json: \n {json} \n");
 //GregorianToHijri
 DateTime timeNow = DateTime.Now;
 DateTime hijri = DateConverter.GregorianToHijri(timeNow);
@@ -26,8 +26,22 @@ Console.WriteLine($"HijriToGregorian \n {gregorian.ToString("dd/MM/yyyy")} \n");
 //Datatble To CSV
 string path = string.Empty;
 string fileName = "DtToExcel";
-Console.WriteLine($"the file {dt.ToCsv(path, fileName)} has been successfully saved\n");
+string csvPath = dt.ToCsv(path, fileName);
+Console.WriteLine($"the file {csvPath} has been successfully saved\n");
 //Json To CSV
 fileName = "JsonToExcel";
 Console.WriteLine($"the file {json.ToCsv(path, fileName)} has been successfully saved\n");
+//CSV To Json
+Console.WriteLine($"CSV To Json {ExcelConverter.CsvToJson(csvPath)}\n");
+//CSV To Datatable
+DataTable csvDt = ExcelConverter.CsvToDataTable(csvPath);
+Console.WriteLine($"CSV To Datatable: \n");
+foreach (DataRow row in csvDt.Rows)
+{
+    foreach (DataColumn column in dt.Columns)
+    {
+        Console.Write($"{column.ColumnName} : {row[column.ColumnName]} \t");
+    }
+    Console.WriteLine("\n ");
+}
 Console.ReadLine();

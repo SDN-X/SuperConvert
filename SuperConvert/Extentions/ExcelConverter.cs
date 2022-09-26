@@ -16,7 +16,7 @@ namespace SuperConvert.Extentions
         /// <param name="path"></param>
         /// <param name="fileName"></param>
         /// <returns></returns>
-        public static string ToCsv(this DataTable dataTable, string path, string fileName) =>
+        public static string ToCsv(this DataTable dataTable, string path = "", string fileName = "excel") =>
              Helpers.DataTableToExcel(dataTable,path,fileName);
 
         /// <summary>
@@ -26,7 +26,12 @@ namespace SuperConvert.Extentions
         /// <param name="path"></param>
         /// <param name="fileName"></param>
         /// <returns></returns>
-        public static string ToCsv(this string jsonData, string path, string fileName) =>
+        public static string ToCsv(this string jsonData, string path = "", string fileName = "excel") =>
              Helpers.JsonToExcel(jsonData, path, fileName);
+        public static string CsvToJson(string filePath) =>
+            Helpers.ConvertCsvToJson(filePath);
+
+        public static DataTable CsvToDataTable(string filePath) =>
+            Helpers.ConvertCsvToDatatable(filePath);
     }
 }
