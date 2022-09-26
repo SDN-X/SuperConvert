@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SuperConvert.Extentions.Interfaces;
-
-public interface IDateConverter
+namespace SuperConvert.Extentions.Interfaces
 {
-    DateTime HijriToGregorian(DateTime date);
-    DateTime GregorianToHijri(DateTime date);
+    public interface IDateConverter
+    {
+        DateTime HijriToGregorian(DateTime date);
+        DateTime GregorianToHijri(DateTime date);
+    }
 }
