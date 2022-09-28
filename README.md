@@ -13,10 +13,10 @@ SuperConvert is a tool to convert your data in c#
 
 ## Features
 
-- Convert Json to datatable
-- Convert Datatable to json
+- Convert Json to Datatable
+- Convert Datatable to Json
 - DateTime convert from Gregorian To Hijri
-- DateTime convert Hijri To Gregorian
+- DateTime convert from Hijri To Gregorian
 - Json convert to Csv
 - DataTable convert to Csv
 - Csv convert to Json
@@ -95,7 +95,7 @@ DataTable csvDt = ExcelConverter.CsvToDataTable(csvPath);
 | ------  | ------ |
 | 1.0.3.2 | [https://www.nuget.org/packages/SuperConvert/1.0.3.2]|
 | 1.0.3.1 | [Deprecated] |
-| 1.1.3 | [https://www.nuget.org/packages/SuperConvert/1.0.3]|
-| 1.1.2 | [https://www.nuget.org/packages/SuperConvert/1.0.2]|
+| 1.0.3 | [https://www.nuget.org/packages/SuperConvert/1.0.3]|
+| 1.0.2 | [https://www.nuget.org/packages/SuperConvert/1.0.2]|
 | 1.0.1 | [https://www.nuget.org/packages/SuperConvert/1.0.1]|
 | 1.0.0 | [https://www.nuget.org/packages/SuperConvert/1.0.0]|
