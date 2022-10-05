@@ -1,16 +1,16 @@
-﻿## Current version 1.0.3
-## Next version 1.0.3.2
+﻿## Current version 1.0.3.2
+## Next version 1.0.3.3
 
 ## Building new version
- - After editing the version on .csproj file Go to the project path "repos\SuperConvert\SuperConvert" and Run=>
+ - After editing the version on .csproj file CD to the project path "repos\SuperConvert\SuperConvert" and Run=>
 
 ``` 
 msbuild -t:pack 
 ```
 
 ## Publishing new version 
-## Go to nuget.com -> under username -> API keys -> create key
-## CD to .nupkg path (\repos\SuperConvert\SuperConvert\bin\Debug\) and RUN:
+## Cd to nuget.com -> under username -> API keys -> create key
+## Cd to .nupkg path (\repos\SuperConvert\SuperConvert\bin\Debug\) and RUN:
 
 ```
 dotnet nuget push SuperConvert.1.0.3.2.nupkg --api-key <KEY> --source https://api.nuget.org/v3/index.json
