@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Text.Json;
+using SuperConvert.Helpers;
 
 namespace SuperConvert.Extentions
 {
@@ -16,7 +17,7 @@ namespace SuperConvert.Extentions
         /// <exception cref="Exception"></exception>
         public static DataTable ToDataTable(this string jsonString, string tableName = "") => string.IsNullOrEmpty(jsonString)
                 ? throw new ArgumentNullException("String value can not be empty or null!")
-                : Helpers.JsonToDataTable(jsonString, tableName);
+                : Helper.JsonToDataTable(jsonString, tableName);
 
 
 
@@ -28,7 +29,7 @@ namespace SuperConvert.Extentions
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
         public static string ToJson(this DataTable dataTable)
-        => dataTable == null ? throw new ArgumentNullException("DataTable can not be empty or null!") : Helpers.DataTableToJson(dataTable);
+        => dataTable == null ? throw new ArgumentNullException("DataTable can not be empty or null!") : Helper.DataTableToJson(dataTable);
 
 
 
@@ -38,7 +39,7 @@ namespace SuperConvert.Extentions
         /// <param name="json"></param>
         /// <param name="returnedType"></param>
         /// <param name="serializeOptions"></param>
-        /// <returns></returns>
+        /// <returns>object</returns>
         public static object SafeDeserialize(this string json, Type returnedType, JsonSerializerOptions serializeOptions = null)
         {
             try
@@ -49,7 +50,7 @@ namespace SuperConvert.Extentions
                 }
                 return JsonSerializer.Deserialize(json, returnedType, serializeOptions);
             }
-            catch (Exception ex)
+            catch 
             {
                 return null;
             }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SuperConvert.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,7 @@ namespace SuperConvert.Extentions
         /// <returns></returns>
         public static int[] ToAsciiArray(this string textToConvert) => string.IsNullOrEmpty(textToConvert)
                 ? throw new ArgumentNullException("String can not be empty or null!")
-                : Helpers.ConvertStringToAscii(textToConvert);
+                : Helper.ConvertStringToAscii(textToConvert);
         /// <summary>
         /// Converting list of ascii numbers int[] to text string
         /// </summary>
@@ -24,7 +25,7 @@ namespace SuperConvert.Extentions
         public static string AsciiToString(this int[] asciiArray)
             => (asciiArray == null || asciiArray.Length == 0)
                 ? throw new ArgumentNullException("Ascci Array can not be empty or null!")
-                : Helpers.ConvertAsciiToString(asciiArray);
+                : Helper.ConvertAsciiToString(asciiArray);
 
     }
 }

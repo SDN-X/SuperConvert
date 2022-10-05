@@ -1,5 +1,6 @@
 ﻿using SuperConvert.Extentions;
 using System.Data;
+using SuperConvert.Helpers;
 
 //Json to dataTable
 string customers = "[{\"CompanayID\":\"k123\",\"Role\":\"Admin\",\"Country\":\"UK\",\"Asset\":\"HD\",\"incident\":null}, {\"CompanayID\":\"k234\",\"Role\":\"User\",\"Country\":\"US\",\"Asset\":\"HD12\",\"incident\":\"abc 1\"}]";
@@ -53,4 +54,10 @@ asciiArray.ToList().ForEach(i => Console.Write($"{i} "));
 toAscii = asciiArray.AsciiToString();
 Console.WriteLine($"\n\nascii to string: ");
 Console.WriteLine($"{toAscii} \n");
+//File to Base64
+string base64File = FileConvert.ToBase64String(csvPath);
+Console.WriteLine($"File to Base64 => {base64File}");
+
+//Base64 to File
+FileConvert.ToFile(base64File,"MyFile");
 Console.ReadLine();

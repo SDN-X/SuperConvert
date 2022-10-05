@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text.Json;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using System.Data.OleDb;
-namespace SuperConvert.Extentions
+using SuperConvert.Extentions;
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("SuperConvert")]
+namespace SuperConvert.Helpers
 {
-    public static class Helpers
+    public static class Helper
     {
         #region Json Converters
         /// <summary>
