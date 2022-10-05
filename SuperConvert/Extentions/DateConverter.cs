@@ -10,32 +10,46 @@ namespace SuperConvert.Extentions
 {
     public static class DateConverter
     {
-        public static DateTime GregorianToHijri(DateTime date)
+        /// <summary>
+        /// Convert gregorian date to hijri date
+        /// </summary>
+        /// <param name="gregorianDate"></param>
+        /// <returns>Hijri date</returns>
+        public static DateTime GregorianToHijri(DateTime gregorianDate)
         {
-            if (date.Year >= 1900)
+            if (gregorianDate.Year >= 1900)
             {
-                var result = ConvertDateCalendar(date, Enums.Calender.Hijri);
+                var result = ConvertDateUsingCalender(gregorianDate, Enums.Calender.Hijri);
                 return DateTime.Parse(result);
             }
-            return date;
+            return gregorianDate;
         }
-        public static DateTime HijriToGregorian(DateTime date)
+        /// <summary>
+        /// Convert hijri date to gregorian date
+        /// </summary>
+        /// <param name="hijriDate"></param>
+        /// <returns></returns>
+        public static DateTime HijriToGregorian(DateTime hijriDate)
         {
-            if (date.Year < 1900)
+            if (hijriDate.Year < 1900)
             {
-                var result = ConvertDateCalendar(date, Enums.Calender.Gregorian);
+                var result = ConvertDateUsingCalender(hijriDate, Enums.Calender.Gregorian);
                 return DateTime.Parse(result);
 
 
             }
-            return date;
+            return hijriDate;
         }
-
-
-        private static string ConvertDateCalendar(DateTime date, Enums.Calender Calendar)
+        /// <summary>
+        /// Convert date method to hijri date or gregorian date
+        /// </summary>
+        /// <param name="date"></param>
+        /// <param name="calendar"></param>
+        /// <returns></returns>
+        private static string ConvertDateUsingCalender(DateTime date, Enums.Calender calendar)
         {
             string result = string.Empty;
-            switch (Calendar)
+            switch (calendar)
             {
                 case Enums.Calender.Hijri:
                     CultureInfo cultureInfo = new CultureInfo("ar-SA");
