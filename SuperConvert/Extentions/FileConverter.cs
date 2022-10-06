@@ -3,7 +3,7 @@ using System.IO;
 
 namespace SuperConvert.Extentions
 {
-    public static class FileConvert
+    public static class FileConverter
     {
         public static string ToBase64String(string fullPath) => Convert.ToBase64String(File.ReadAllBytes(fullPath));
         public static void ToFile(string base64String, string fileName, string filePath = "")

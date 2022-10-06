@@ -4,11 +4,14 @@ using System.Data;
 using System.Linq;
 using System.Text.Json;
 using System.IO;
-using SuperConvert.Extentions;
 using System.Runtime.CompilerServices;
+using System.Runtime.Serialization.Json;
+using System.Text;
+using System.Xml.Linq;
+using System.Xml;
 
 [assembly: InternalsVisibleTo("SuperConvert")]
-namespace SuperConvert.Helpers
+namespace SuperConvert.Extentions.Helpers
 {
     public static class Helper
     {
@@ -50,6 +53,21 @@ namespace SuperConvert.Helpers
                 dt.Rows.Add(dr);
             }
             return dt;
+        }
+        internal static string JsonToXml(string jsonString) =>
+            XDocument.Load(JsonReaderWriterFactory.CreateJsonReader(Encoding.ASCII.GetBytes(jsonString), new XmlDictionaryReaderQuotas())).ToString();
+        /// <summary>
+        /// Getting Dictionary of json values
+        /// </summary>
+        /// <param name="xml"></param>
+        /// <returns>Dictionary<string, object></returns>
+        internal static Dictionary<string, object> GetXmlData(XElement xml)
+        {
+            var attr = xml.Attributes().ToDictionary(d => d.Name.LocalName, d => (object)d.Value);
+            if (xml.HasElements) attr.Add("_value", xml.Elements().Select(e => GetXmlData(e)));
+            else if (!xml.IsEmpty) attr.Add("_value", xml.Value);
+
+            return new Dictionary<string, object> { { xml.Name.LocalName, attr } };
         }
         /// <summary>
         /// Converts from DataTable to List of object ,Returned Json will be List of objects 
@@ -181,7 +199,7 @@ namespace SuperConvert.Helpers
         /// <summary>
         /// Serialize an object to json
         /// </summary>
-        private static string Serialize<T>(T item) => JsonSerializer.Serialize<T>(item);
+        internal static string Serialize<T>(T item) => JsonSerializer.Serialize(item);
         #endregion
     }
 }
