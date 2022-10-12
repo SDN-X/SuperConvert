@@ -51,20 +51,8 @@ namespace SuperConvert.Extentions
         /// <param name="returnedType"></param>
         /// <param name="serializeOptions"></param>
         /// <returns>object</returns>
-        public static object SafeDeserialize(this string json, Type returnedType, JsonSerializerOptions serializeOptions = null)
-        {
-            try
-            {
-                if (serializeOptions == null)
-                {
-                    serializeOptions = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-                }
-                return JsonSerializer.Deserialize(json, returnedType, serializeOptions);
-            }
-            catch
-            {
-                return null;
-            }
-        }
+        [Obsolete("This function is deprecated, and will be removed within the next versions, Plesae use Helper.Deserialize() instead.")]
+        public static object SafeDeserialize(this string json, Type returnedType, JsonSerializerOptions? serializeOptions = null)
+            => JsonSerializer.Deserialize(json, returnedType, serializeOptions ?? new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
     }
 }
