@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Data;
 using System.Text.Json;
-using SuperConvert.Helpers;
+using System.Xml.Linq;
+using SuperConvert.Extentions.Helpers;
 
 namespace SuperConvert.Extentions
 {
-    public static class JsonDataTable
+    public static class JsonConverter
     {
 
         /// <summary>
@@ -30,8 +31,18 @@ namespace SuperConvert.Extentions
         /// <exception cref="Exception"></exception>
         public static string ToJson(this DataTable dataTable)
         => dataTable == null ? throw new ArgumentNullException("DataTable can not be empty or null!") : Helper.DataTableToJson(dataTable);
-
-
+        /// <summary>
+        /// Getting Xml string from json string
+        /// </summary>
+        /// <param name="jsonString"></param>
+        /// <returns>string</returns>
+        public static string ToXml(this string jsonString) => Helper.JsonToXml(jsonString);
+        /// <summary>
+        /// Getting Json string out of xml string
+        /// </summary>
+        /// <param name="xmlString"></param>
+        /// <returns></returns>
+        public static string ToJson(this string xmlString) => Helper.Serialize(Helper.GetXmlData(XElement.Parse(xmlString)));
 
         /// <summary>
         /// Safe deserializing json string to object
@@ -50,7 +61,7 @@ namespace SuperConvert.Extentions
                 }
                 return JsonSerializer.Deserialize(json, returnedType, serializeOptions);
             }
-            catch 
+            catch
             {
                 return null;
             }
