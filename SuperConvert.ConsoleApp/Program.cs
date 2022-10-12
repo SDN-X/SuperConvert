@@ -13,26 +13,33 @@ foreach (DataRow row in dt.Rows)
     }
     Console.WriteLine("\n ");
 }
+
 //DataTable to json
 string json = dt.ToJson();
 Console.WriteLine($"Json: \n {json} \n");
+
 //GregorianToHijri
 DateTime timeNow = DateTime.Now;
 DateTime hijri = DateConverter.GregorianToHijri(timeNow);
 Console.WriteLine($"GregorianToHijri \n {hijri.ToString("dd/MM/yyyy")}\n");
+
 //HijriToGregorian
 DateTime gregorian = DateConverter.HijriToGregorian(hijri);
 Console.WriteLine($"HijriToGregorian \n {gregorian.ToString("dd/MM/yyyy")} \n");
+
 //Datatble To CSV
 string path = string.Empty;
 string fileName = "DtToExcel";
 string csvPath = dt.ToCsv(path, fileName);
 Console.WriteLine($"the file {csvPath} has been successfully saved\n");
+
 //Json To CSV
 fileName = "JsonToExcel";
 Console.WriteLine($"the file {json.ToCsv(path, fileName)} has been successfully saved\n");
+
 //CSV To Json
 Console.WriteLine($"CSV To Json {ExcelConverter.CsvToJson(csvPath)}\n");
+
 //CSV To Datatable
 DataTable csvDt = ExcelConverter.CsvToDataTable(csvPath);
 Console.WriteLine($"CSV To Datatable: \n");
@@ -44,15 +51,18 @@ foreach (DataRow row in csvDt.Rows)
     }
     Console.WriteLine("\n ");
 }
+
 //string to ascii
 string toAscii = "Hello world";
 var asciiArray = toAscii.ToAsciiArray();
 Console.WriteLine($"string to ascii: ");
 asciiArray.ToList().ForEach(i => Console.Write($"{i} "));
+
 //ascii to string
 toAscii = asciiArray.AsciiToString();
 Console.WriteLine($"\n\nascii to string: ");
 Console.WriteLine($"{toAscii} \n");
+
 //File to Base64
 string base64File = FileConverter.ToBase64String(csvPath);
 Console.WriteLine($"File to Base64 => {base64File}\n");
@@ -62,7 +72,8 @@ FileConverter.ToFile(base64File, "MyFile");
 
 //Json to xml
 string xmlString = customers.ToXml();
-Console.WriteLine($"Json to xml\n{xmlString}\n");
+Console.WriteLine($"Json to Xml\n{xmlString}\n");
+
 //Xml to json
-Console.WriteLine($"Json to xml\n{xmlString.ToJson()}\n");
+Console.WriteLine($"Xml to Json\n{xmlString.ToJson()}\n");
 Console.ReadLine();

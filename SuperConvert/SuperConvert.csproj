@@ -5,7 +5,16 @@
 		<Nullable>enable</Nullable>
 		<Title>Super Convert</Title>
 		<Version>1.0.3.3</Version>
-		<Description>Convert between data containers, Json/Datatable/Excelsheets and other data tables</Description>
+		<Description>
+			SuperConvert is an open-source lightweight package to convert your data in c#
+			Convert between data containers, Json/Datatable/Excelsheets and other data tables
+			Create some json strings / Data tables
+			Convert between them
+			Convert DateTime
+			Convert Json ⇔ Csv
+			Convert DataTable ⇔ Csv
+			✨Magic ✨
+		</Description>
 		<PackageIcon>electric-generator.png</PackageIcon>
 	</PropertyGroup>
 
