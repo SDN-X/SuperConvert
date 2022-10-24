@@ -13,7 +13,7 @@ using System.Xml;
 [assembly: InternalsVisibleTo("SuperConvert")]
 namespace SuperConvert.Extentions.Helpers
 {
-    public static class Helper
+    public static class SuperHelper
     {
         #region Json Converters
         /// <summary>

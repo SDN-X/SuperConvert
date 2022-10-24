@@ -19,7 +19,7 @@ namespace SuperConvert.Extentions
         /// <param name="fileName"></param>
         /// <returns></returns>
         public static string ToCsv(this DataTable dataTable, string path = "", string fileName = "excel") =>
-             Helper.DataTableToExcel(dataTable,path,fileName);
+             SuperHelper.DataTableToExcel(dataTable,path,fileName);
 
         /// <summary>
         /// Converting json To CSV
@@ -29,20 +29,20 @@ namespace SuperConvert.Extentions
         /// <param name="fileName"></param>
         /// <returns></returns>
         public static string ToCsv(this string jsonData, string path = "", string fileName = "excel") =>
-             Helper.JsonToExcel(jsonData, path, fileName);
+             SuperHelper.JsonToExcel(jsonData, path, fileName);
         /// <summary>
         /// Converting Csv to json, receives the csv path and returns json object 
         /// </summary>
         /// <param name="filePath"></param>
         /// <returns></returns>
         public static string CsvToJson(string filePath) =>
-            Helper.ConvertCsvToJson(filePath);
+            SuperHelper.ConvertCsvToJson(filePath);
         /// <summary>
         /// Converting Csv to dataTable, receives the csv path and returns dataTable object
         /// </summary>
         /// <param name="filePath"></param>
         /// <returns></returns>
         public static DataTable CsvToDataTable(string filePath) =>
-            Helper.ConvertCsvToDatatable(filePath);
+            SuperHelper.ConvertCsvToDatatable(filePath);
     }
 }

@@ -18,7 +18,7 @@ namespace SuperConvert.Extentions
         /// <exception cref="Exception"></exception>
         public static DataTable ToDataTable(this string jsonString, string tableName = "") => string.IsNullOrEmpty(jsonString)
                 ? throw new ArgumentNullException("String value can not be empty or null!")
-                : Helper.JsonToDataTable(jsonString, tableName);
+                : SuperHelper.JsonToDataTable(jsonString, tableName);
 
 
 
@@ -30,19 +30,19 @@ namespace SuperConvert.Extentions
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
         public static string ToJson(this DataTable dataTable)
-        => dataTable == null ? throw new ArgumentNullException("DataTable can not be empty or null!") : Helper.DataTableToJson(dataTable);
+        => dataTable == null ? throw new ArgumentNullException("DataTable can not be empty or null!") : SuperHelper.DataTableToJson(dataTable);
         /// <summary>
         /// Getting Xml string from json string
         /// </summary>
         /// <param name="jsonString"></param>
         /// <returns>string</returns>
-        public static string ToXml(this string jsonString) => Helper.JsonToXml(jsonString);
+        public static string ToXml(this string jsonString) => SuperHelper.JsonToXml(jsonString);
         /// <summary>
         /// Getting Json string out of xml string
         /// </summary>
         /// <param name="xmlString"></param>
         /// <returns></returns>
-        public static string ToJson(this string xmlString) => Helper.Serialize(Helper.GetXmlData(XElement.Parse(xmlString)));
+        public static string ToJson(this string xmlString) => SuperHelper.Serialize(SuperHelper.GetXmlData(XElement.Parse(xmlString)));
 
         /// <summary>
         /// Safe deserializing json string to object
