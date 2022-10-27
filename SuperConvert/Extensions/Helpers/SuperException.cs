@@ -1,10 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace SuperConvert.Extensions.Helpers
 {
-    internal class SuperException
+    internal class SuperException : Exception
     {
+        public string TechnicalMessage { get; }
+        public int ErrorCode { get; }
+        public SuperException(string technicalMessage, int errorCode)
+        {
+            TechnicalMessage = technicalMessage;
+            ErrorCode = errorCode;
+        }
     }
 }
