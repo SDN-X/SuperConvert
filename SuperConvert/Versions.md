@@ -13,7 +13,7 @@ msbuild -t:pack
 ## Cd to .nupkg path (\repos\SuperConvert\SuperConvert\bin\Debug\) and RUN:
 
 ```
-dotnet nuget push SuperConvert.1.0.3.3.nupkg --api-key <KEY> --source https://api.nuget.org/v3/index.json
+dotnet nuget push SuperConvert.1.0.3.4.nupkg --api-key <KEY> --source https://api.nuget.org/v3/index.json
 ```
 
 ## Adding new features 
