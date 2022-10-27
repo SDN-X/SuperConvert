@@ -2,9 +2,9 @@
 using System.Data;
 using System.Text.Json;
 using System.Xml.Linq;
-using SuperConvert.Extentions.Helpers;
+using SuperConvert.Extensions.Helpers;
 
-namespace SuperConvert.Extentions
+namespace SuperConvert.Extensions
 {
     public static class JsonConverter
     {

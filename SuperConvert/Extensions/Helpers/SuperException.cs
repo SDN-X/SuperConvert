@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace SuperConvert.Extentions.Helpers
+namespace SuperConvert.Extensions.Helpers
 {
     internal class SuperException : Exception
     {

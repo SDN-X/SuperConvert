@@ -1,7 +1,7 @@
-﻿using SuperConvert.Extentions.Helpers;
+﻿using SuperConvert.Extensions.Helpers;
 using System;
 
-namespace SuperConvert.Extentions
+namespace SuperConvert.Extensions
 {
     public static class EncodeingDecoding
     {

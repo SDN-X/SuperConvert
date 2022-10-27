@@ -5,9 +5,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SuperConvert.Extentions.Helpers;
+using SuperConvert.Extensions.Helpers;
 
-namespace SuperConvert.Extentions
+namespace SuperConvert.Extensions
 {
     public static class ExcelConverter
     {

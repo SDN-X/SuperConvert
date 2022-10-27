@@ -11,7 +11,7 @@ using System.Xml.Linq;
 using System.Xml;
 
 [assembly: InternalsVisibleTo("SuperConvert")]
-namespace SuperConvert.Extentions.Helpers
+namespace SuperConvert.Extensions.Helpers
 {
     public static class SuperHelper
     {
