@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace SuperConvert.Extentions
+namespace SuperConvert.Extensions
 {
     public static class FileConverter
     {
