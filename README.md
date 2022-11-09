@@ -29,7 +29,7 @@ SuperConvert is a tool to convert your data in c#
 
 ## Tech
 
-SuperConvet's code is based on .net core technology (netcoreapp3.1, net5.0, net6.0)
+SuperConvet's code is based on .net core technology (netcoreapp3.1, net5.0, net6.0, net7.0)
 
 - [.NetCore3.1, .Net5, .Net6] - C# !
 
@@ -41,7 +41,7 @@ SuperConvet's code is based on .net core technology (netcoreapp3.1, net5.0, net6
 Run the command on your nuget package console .
 
 ```sh
-Install-Package SuperConvert -Version 1.0.3.4
+Install-Package SuperConvert -Version 1.0.3.5
 ```
 ## Or 
 
@@ -94,6 +94,7 @@ DataTable csvDt = ExcelConverter.CsvToDataTable(csvPath);
 ```
 | Version | README |
 | ------  | ------ |
+| 1.0.3.5 | [https://www.nuget.org/packages/SuperConvert/1.0.3.5]|
 | 1.0.3.4 | [https://www.nuget.org/packages/SuperConvert/1.0.3.4]|
 | 1.0.3.3 | [https://www.nuget.org/packages/SuperConvert/1.0.3.3]|
 | 1.0.3.2 | [https://www.nuget.org/packages/SuperConvert/1.0.3.2]|
