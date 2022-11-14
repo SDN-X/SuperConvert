@@ -1,15 +1,13 @@
-﻿using System;
+﻿using SuperConvert.Extensions.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SuperConvert.Extensions.Helpers;
 
-namespace SuperConvert.Extensions
+namespace SuperConvert.Files.Extensions
 {
-    [Obsolete("This Class is Deprecated, it will be removed on future versions, Please use 'SuperConvert.Files'")]
     public static class ExcelConverter
     {
         /// <summary>
@@ -19,7 +17,6 @@ namespace SuperConvert.Extensions
         /// <param name="path"></param>
         /// <param name="fileName"></param>
         /// <returns></returns>
-        [Obsolete("This Method is Deprecated, it will be removed on future versions, Please use 'SuperConvert.Files'")]
         public static string ToCsv(this DataTable dataTable, string path = "", string fileName = "excel") =>
                  SuperHelper.DataTableToExcel(dataTable, path, fileName);
 
@@ -30,7 +27,6 @@ namespace SuperConvert.Extensions
         /// <param name="path"></param>
         /// <param name="fileName"></param>
         /// <returns></returns>
-        [Obsolete("This Method is Deprecated, it will be removed on future versions, Please use 'SuperConvert.Files'")]
         public static string ToCsv(this string jsonData, string path = "", string fileName = "excel") =>
              SuperHelper.JsonToExcel(jsonData, path, fileName);
         /// <summary>
@@ -38,7 +34,6 @@ namespace SuperConvert.Extensions
         /// </summary>
         /// <param name="filePath"></param>
         /// <returns></returns>
-        [Obsolete("This Method is Deprecated, it will be removed on future versions, Please use 'SuperConvert.Files'")]
         public static string CsvToJson(string filePath) =>
             SuperHelper.ConvertCsvToJson(filePath);
         /// <summary>
@@ -46,7 +41,6 @@ namespace SuperConvert.Extensions
         /// </summary>
         /// <param name="filePath"></param>
         /// <returns></returns>
-        [Obsolete("This Method is Deprecated, it will be removed on future versions, Please use 'SuperConvert.Files'")]
         public static DataTable CsvToDataTable(string filePath) =>
             SuperHelper.ConvertCsvToDatatable(filePath);
     }
