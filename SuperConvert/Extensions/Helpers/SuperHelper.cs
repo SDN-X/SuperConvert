@@ -10,7 +10,7 @@ using System.Text;
 using System.Xml.Linq;
 using System.Xml;
 
-[assembly: InternalsVisibleTo("SuperConvert")]
+[assembly: InternalsVisibleTo("SuperConvert.Files")]
 namespace SuperConvert.Extensions.Helpers
 {
     public static class SuperHelper
