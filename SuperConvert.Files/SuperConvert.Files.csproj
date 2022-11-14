@@ -4,7 +4,7 @@
 		<TargetFrameworks>netcoreapp3.1;net5.0;net6.0;net7.0</TargetFrameworks>
 		<Nullable>enable</Nullable>
 		<Title>Super Convert Files</Title>
-		<Version>1.0.3.5</Version>
+		<Version>1.0.3.6</Version>
 		<Description>
 			SuperConvert is an open-source lightweight package to convert your data in c#
 			Convert between data containers, Json/Datatable/Excelsheets and other data tables
@@ -26,7 +26,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\SuperConvert\SuperConvert.csproj" />
+	  <PackageReference Include="SuperConvert" Version="1.0.3.6" />
 	</ItemGroup>
 
 </Project>
