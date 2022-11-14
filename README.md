@@ -95,12 +95,12 @@ DataTable csvDt = ExcelConverter.CsvToDataTable(csvPath);
 | Version | README |
 | ------  | ------ |
 | 1.0.3.6 | https://www.nuget.org/packages/SuperConvert/1.0.3.6|
-| 1.0.3.5 | [https://www.nuget.org/packages/SuperConvert/1.0.3.5]|
-| 1.0.3.4 | [https://www.nuget.org/packages/SuperConvert/1.0.3.4]|
-| 1.0.3.3 | [https://www.nuget.org/packages/SuperConvert/1.0.3.3]|
-| 1.0.3.2 | [https://www.nuget.org/packages/SuperConvert/1.0.3.2]|
-| 1.0.3.1 | [Deprecated] |
-| 1.0.3 | [https://www.nuget.org/packages/SuperConvert/1.0.3]|
-| 1.0.2 | [https://www.nuget.org/packages/SuperConvert/1.0.2]|
-| 1.0.1 | [https://www.nuget.org/packages/SuperConvert/1.0.1]|
-| 1.0.0 | [https://www.nuget.org/packages/SuperConvert/1.0.0]|
+| 1.0.3.5 | https://www.nuget.org/packages/SuperConvert/1.0.3.5|
+| 1.0.3.4 | https://www.nuget.org/packages/SuperConvert/1.0.3.4|
+| 1.0.3.3 | https://www.nuget.org/packages/SuperConvert/1.0.3.3|
+| 1.0.3.2 | https://www.nuget.org/packages/SuperConvert/1.0.3.2|
+| 1.0.3.1 | Deprecated] |
+| 1.0.3 | https://www.nuget.org/packages/SuperConvert/1.0.3|
+| 1.0.2 | https://www.nuget.org/packages/SuperConvert/1.0.2|
+| 1.0.1 | https://www.nuget.org/packages/SuperConvert/1.0.1|
+| 1.0.0 | https://www.nuget.org/packages/SuperConvert/1.0.0|
