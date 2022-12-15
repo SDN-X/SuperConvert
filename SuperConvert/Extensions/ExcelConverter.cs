@@ -9,7 +9,7 @@ using SuperConvert.Extensions.Helpers;
 
 namespace SuperConvert.Extensions
 {
-    [Obsolete("This Class is Deprecated, it will be removed on future versions, Please use 'SuperConvert.Files'")]
+    [Obsolete("This Class is Deprecated, it will be removed on future versions, Please use \"SuperConvert.Files\"")]
     public static class ExcelConverter
     {
         /// <summary>
