@@ -22,11 +22,11 @@
         </div>
         <div class="col">
             <label for="exampleInputEmail1">Hijri Date</label>
-            <input class="form-control" value="@Model?.Converted" type="text" readonly />
+            <input id="hijridateinput" class="form-control" value="@Model?.Converted" type="text" readonly />
         </div>
         <div class="col-md-4">
             <br />
-            <button type="button" class="btn btn-outline-primary btn-block">Copy Date</button>
+            <button onclick="copyToClipBoard()" type="button" class="btn btn-outline-primary btn-block">Copy Date</button>
         </div>
     </div>
 </form>
@@ -40,3 +40,43 @@
         //alert("ready!");
     })();
 </script>
+<style>
+    <style >
+    .tooltip {
+        position: relative;
+        display: inline-block;
+    }
+
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 140px;
+        background-color: #555;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        z-index: 1;
+        bottom: 150%;
+        left: 50%;
+        margin-left: -75px;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+    }
+</style>

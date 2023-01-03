@@ -7,30 +7,38 @@
 <h2>@ViewData["Title"]</h2>
 
 <br />
-
-<div class="card col-md-10">
-    <div class="card-body">
-        <div class="form-group">
-            <div id="editorWrapper">
-                <div id="editor"></div>
+<div class="row">
+    <div class="card col-md-6">
+        <div class="card-body">
+            <div class="form-group">
+                <div id="editorWrapper">
+                    <div id="editor"></div>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-3"><a asp-action="index" class="btn" id="minify"><i class="fa-solid fa-arrow-left fa-beat"></i> Back</a></div>
-            <div class="col-md-3"><a class="btn" id="minify">Minify</a></div>
-            <div class="col-md-3"><a class="btn" id="beautify">Beautify</a></div>
-            <form method="post" id="JsonToCsvForm" asp-action="JsonToCsv" class="col-md-3">
+    </div>
+    <div class="col-md-3">
+        <div>
+            <div><a asp-action="index" class="btn" id="minify"><i class="fa-solid fa-arrow-left fa-beat"></i> Back</a></div>
+            <div><a class="btn" id="minify">Minify</a></div>
+            <div><a class="btn" id="beautify">Beautify</a></div>
+            <form method="post" asp-action="">
+                <button type="button" class="btn" id="UploadCsv" onclick="document.getElementById('csvfile').click();">  <i class="fa-solid fa-upload fa-beat"></i>  Upload Csv  <i class="fa-solid fa-upload fa-beat"></i> </button>
+                <input type="file" style="display:none;" id="csvfile" name="csvfile" />
+            </form>
+            <form onsubmit="return submitForm();" method="post" id="JsonToCsvForm" asp-action="JsonToCsv">
                 <input name="jsonString" id="jsonString" type="hidden" /> <div><button type="submit" class="btn" id="toCsv">To Csv <i class="fa-solid fa-arrow-right fa-beat"></i> </button></div>
-           </form> 
+            </form>
         </div>
     </div>
+    <div class="col-md-3">
+        AD
+    </div>
 </div>
+
+
+
 <style>
-
-    .card {
-        width: 80%;
-    }
-
     @@media screen and (max-width: 1200px) {
         .card {
             width: 100%;
@@ -68,9 +76,7 @@
     .btn {
         color: rgba(0, 0, 0, 0.9);
         font-family: "Russo One", sans-serif;
-        font-size: 1.2em;
         font-weight: 200;
-        letter-spacing: 0.15em;
         line-height: 2.5;
         text-decoration: none;
         text-transform: uppercase;

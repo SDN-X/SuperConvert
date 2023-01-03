@@ -60,6 +60,20 @@
             var element = document.getElementById("convertNowLink");
             element.classList.toggle("text-dark");
         }
+        function copyToClipBoard() {
+            // Get the text field
+            var copyText = document.getElementById("hijridateinput");
+
+            // Select the text field
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); // For mobile devices
+
+            // Copy the text inside the text field
+            navigator.clipboard.writeText(copyText.value);
+
+            // Alert the copied text
+            alert("Copied the text: " + copyText.value);
+        }
     </script>
     <script>
         const editor = ace.edit('editor', {
@@ -78,6 +92,7 @@
                 document.execCommand('copy')
             } catch (err) {
                 alert('ERROR: Unable to parse text as JSON')
+                throw err;
             }
         }
 
@@ -96,8 +111,8 @@
                 formatText(4);
                 var hiddenObject = document.getElementById('jsonString');
                 hiddenObject.value = editor.getValue();
+                return true;
             } catch (err) {
-                alert('ERROR: Unable to parse text as JSON')
                 return false;
             }
         }
@@ -105,7 +120,6 @@
 
         document.getElementById('minify').addEventListener('click', () => formatText())
         document.getElementById('beautify').addEventListener('click', () => formatText(4))
-        document.getElementById('JsonToCsvForm').addEventListener('submit', () => submitForm())
     </script>
 </body>
 </html>
