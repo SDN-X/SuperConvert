@@ -1,0 +1,42 @@
+﻿@model SuperConvert.Web.Models.ConvertViewModel
+
+@{
+    ViewData["Title"] = "Gregorian To Hijri !";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<br />
+<br />
+<form method="post" asp-controller="Convert" asp-action="GregorianToHijri">
+    <div class="row">
+        <div class="col form-group">
+            <label for="exampleInputEmail1">Gregorian Date</label>
+            <input type="date" name="gregorianDate" value="@Model?.Original" class="form-control">
+        </div>
+        <div class="col">
+            <br />
+            <button type="submit" class="btn btn-outline-success btn-block">
+                To Hijri   <i class="fa-solid fa-arrow-right fa-beat"></i>
+            </button>
+        </div>
+        <div class="col">
+            <label for="exampleInputEmail1">Hijri Date</label>
+            <input class="form-control" value="@Model?.Converted" type="text" readonly />
+        </div>
+        <div class="col-md-4">
+            <br />
+            <button type="button" class="btn btn-outline-primary btn-block">Copy Date</button>
+        </div>
+    </div>
+</form>
+<br />
+<br />
+<br />
+<br />
+<a asp-action="index" class="btn btn-primary btn-lg btn-block">  <i class="fa-solid fa-arrow-left fa-beat"></i> Back</a>
+<script>
+    (function () {
+        //alert("ready!");
+    })();
+</script>

@@ -1,0 +1,88 @@
+﻿@model SuperConvert.Web.Models.ConvertViewModel
+
+@{
+    ViewData["Title"] = "Json To Csv!";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<br />
+
+<div class="card col-md-10">
+    <div class="card-body">
+        <div class="form-group">
+            <div id="editorWrapper">
+                <div id="editor"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"><a asp-action="index" class="btn" id="minify"><i class="fa-solid fa-arrow-left fa-beat"></i> Back</a></div>
+            <div class="col-md-3"><a class="btn" id="minify">Minify</a></div>
+            <div class="col-md-3"><a class="btn" id="beautify">Beautify</a></div>
+            <form method="post" asp-action="JsonToCsv" class="col-md-3">
+                <input name="jsonString" id="jsonString" type="hidden" /> <div><button type="submit" class="btn" id="toCsv">To Csv <i class="fa-solid fa-arrow-right fa-beat"></i> </button></div>
+           </form> 
+        </div>
+    </div>
+</div>
+<style>
+
+    .card {
+        width: 80%;
+    }
+
+    @@media screen and (max-width: 1200px) {
+        .card {
+            width: 100%;
+        }
+    }
+
+    #editorWrapper {
+        position: relative;
+        height: 100%;
+        min-height: 45vh;
+    }
+
+    @@media (min-height: 600px) {
+        #editorWrapper {
+            height: 55vh;
+        }
+    }
+
+    @@media (min-height: 900px) {
+        #editorWrapper {
+            height: 65vh;
+        }
+    }
+
+    #editorWrapper #editor {
+        font-family: "Roboto Mono", monospace;
+        font-size: 14px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    .btn {
+        color: rgba(0, 0, 0, 0.9);
+        font-family: "Russo One", sans-serif;
+        font-size: 1.2em;
+        font-weight: 200;
+        letter-spacing: 0.15em;
+        line-height: 2.5;
+        text-decoration: none;
+        text-transform: uppercase;
+        cursor: pointer;
+        padding: 0 1em;
+        position: relative;
+        width: 100%;
+        margin-bottom: 1em;
+        background-color: #FFA71A;
+    }
+
+        .btn:hover {
+            background-color: #cd7e00;
+        }
+</style>

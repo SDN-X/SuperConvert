@@ -1,0 +1,46 @@
+﻿@model SuperConvert.Web.Models.ConvertViewModel
+
+@{
+    ViewData["Title"] = "Convert Now !";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="row">
+    <div class="col-sm-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Gregorian To Hijri</h5>
+                <p class="card-text">Choose your Gregorian date and convert it into Hijri date.</p>
+                <a asp-action="GregorianToHijri" class="btn btn-primary">Convert Now</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Json To Csv</h5>
+                <p class="card-text">Paste your json text and convert to download Csv file.</p>
+                <a asp-action="JsonToCsv" class="btn btn-primary">Convert Now</a>
+            </div>
+        </div>
+    </div>
+     <div class="col-sm-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+</div>

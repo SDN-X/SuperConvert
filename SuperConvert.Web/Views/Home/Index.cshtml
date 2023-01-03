@@ -1,0 +1,149 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+<div class="tab-content body-tab-content row">
+    <div role="tabpanel" class="tab-pane active col-md-6" id="readme-tab" aria-label="Readme tab content">
+        <div class="readme-common">
+            <div id="readme-container">
+
+
+                <h2 id="super-convert">Super Convert</h2>
+                <h3 id="make-your-data-conversion"><em>Make your data conversion</em></h3>
+                <p><a href="https://github.com/esamelzain/SuperConvert" rel="noopener noreferrer nofollow"><img src="https://travis-ci.org/joemccann/dillinger.svg?branch=master" class="img-fluid" alt="Build Status"></a></p>
+                <p>SuperConvert is a tool to convert your data in c#</p>
+                <ul>
+                    <li>Create some json strings / Data tables</li>
+                    <li>Convert between them</li>
+                    <li>Convert DateTime</li>
+                    <li>Convert Json ⇔ Csv</li>
+                    <li>Convert DataTable ⇔ Csv</li>
+                    <li>✨New Xml/Json Converters ✨</li>
+                    <li>✨Magic ✨</li>
+                </ul>
+                <h3 id="features">Features</h3>
+                <ul>
+                    <li>Convert Json to Datatable</li>
+                    <li>Convert Datatable to Json</li>
+                    <li>DateTime convert from Gregorian To Hijri</li>
+                    <li>DateTime convert from Hijri To Gregorian</li>
+                    <li>Json convert to Csv</li>
+                    <li>DataTable convert to Csv</li>
+                    <li>Csv convert to Json</li>
+                    <li>Csv convert to DataTable</li>
+                </ul>
+                <h3 id="coming-soon">Coming soon !</h3>
+                <ul>
+                    <li>Excel sheets (XLS, XLSX) and other data containers/types</li>
+                </ul>
+                <h3 id="tech">Tech</h3>
+                <p>SuperConvet's code is based on .net core technology (netcoreapp3.1, net5.0, net6.0, net7.0)</p>
+                <ul>
+                    <li>
+                        <p>[.NetCore3.1, .Net5, .Net6] - C# !</p>
+                    </li>
+                    <li>
+                        <p><a href="https://github.com/SDN-X/SuperConvert" rel="noopener noreferrer nofollow">GitHub Code</a> - SuperConvert Project</p>
+                    </li>
+                </ul>
+                <h3 id="installation">Installation</h3>
+                <p>Run the command on your nuget package console .</p>
+<pre><code class="language-sh hljs language-bash">Install-Package SuperConvert -Version 1.0.3.6
+</code></pre>
+                <h3 id="or">Or</h3>
+                <p>Open your nuget package manager and type the name of 'SuperConvert' on the search</p>
+                <h3 id="usage">Usage</h3>
+                <h3 id="namespaces">Namespaces</h3>
+<pre><code class="language-cs hljs language-csharp"><span class="hljs-keyword">using</span> SuperConvert.Extentions;
+<span class="hljs-keyword">using</span> System.Data;
+</code></pre>
+                <h3 id="json-to-datatable">Json to dataTable</h3>
+<pre><code class="language-cs hljs language-csharp"><span class="hljs-built_in">string</span> customers = <span class="hljs-string">"[{\"CompanayID\":\"k123\",\"Role\":\"Admin\",\"Country\":\"UK\",\"Asset\":\"HD\",\"incident\":null}, {\"CompanayID\":\"k234\",\"Role\":\"User\",\"Country\":\"US\",\"Asset\":\"HD12\",\"incident\":\"abc 1\"}]"</span>;
+DataTable dt = customers.ToDataTable(<span class="hljs-string">"TableName"</span>);
+</code></pre>
+                <h3 id="datatable-to-json">DataTable to json</h3>
+<pre><code class="language-cs hljs language-csharp"><span class="hljs-built_in">string</span> json = dt.ToJson();
+</code></pre>
+                <h3 id="datetime-gregoriantohijri">DateTime GregorianToHijri</h3>
+<pre><code class="language-cs hljs language-csharp">DateTime timeNow = DateTime.Now;
+DateTime hijri = DateConverter.GregorianToHijri(timeNow);
+</code></pre>
+                <h3 id="datetime-hijritogregorian">DateTime HijriToGregorian</h3>
+<pre><code class="language-cs hljs language-csharp">DateTime gregorian = DateConverter.HijriToGregorian(hijri);
+</code></pre>
+                <h3 id="excels">Excels</h3>
+                <h3 id="datatable-to-csv">Datatable to Csv</h3>
+<pre><code class="language-cs hljs language-csharp"><span class="hljs-built_in">string</span> path = <span class="hljs-built_in">string</span>.Empty;
+<span class="hljs-built_in">string</span> fileName = <span class="hljs-string">"DtToExcel"</span>;
+<span class="hljs-built_in">string</span> csvPath = dt.ToCsv(path, fileName);
+</code></pre>
+                <h3 id="json-to-csv">Json To CSV</h3>
+<pre><code class="language-cs hljs language-csharp">fileName = <span class="hljs-string">"JsonToExcel"</span>;
+path = <span class="hljs-built_in">string</span>.Empty;
+<span class="hljs-built_in">string</span> csvPath = json.ToCsv(path, fileName)
+</code></pre>
+                <h3 id="csv-to-json">CSV To Json</h3>
+<pre><code class="language-cs hljs language-csharp"><span class="hljs-built_in">string</span> jsonFromCsv = ExcelConverter.CsvToJson(csvPath);
+</code></pre>
+                <h3 id="csv-to-datatable">CSV To Datatable</h3>
+<pre><code class="language-cs hljs language-csharp">DataTable csvDt = ExcelConverter.CsvToDataTable(csvPath);
+</code></pre>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Version</th>
+                            <th>README</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1.0.3.6</td>
+                            <td><a href="https://www.nuget.org/packages/SuperConvert/1.0.3.6" target="_blank">[https://www.nuget.org/packages/SuperConvert/1.0.3.6]</a></td>
+                        </tr>
+                        <tr>
+                            <td>1.0.3.5</td>
+                            <td><a href="https://www.nuget.org/packages/SuperConvert/1.0.3.5" target="_blank">[https://www.nuget.org/packages/SuperConvert/1.0.3.5]</a></td>
+                        </tr>
+                        <tr>
+                            <td>1.0.3.4</td>
+                            <td><a href="https://www.nuget.org/packages/SuperConvert/1.0.3.4" target="_blank">[https://www.nuget.org/packages/SuperConvert/1.0.3.4]</a></td>
+                        </tr>
+                        <tr>
+                            <td>1.0.3.3</td>
+                            <td><a href="https://www.nuget.org/packages/SuperConvert/1.0.3.3" target="_blank">[https://www.nuget.org/packages/SuperConvert/1.0.3.3]</a></td>
+                        </tr>
+                        <tr>
+                            <td>1.0.3.2</td>
+                            <td><a href="https://www.nuget.org/packages/SuperConvert/1.0.3.2" target="_blank">[https://www.nuget.org/packages/SuperConvert/1.0.3.2]</a></td>
+                        </tr>
+                        <tr>
+                            <td>1.0.3.1</td>
+                            <td>[Deprecated]</td>
+                        </tr>
+                        <tr>
+                            <td>1.0.3</td>
+                            <td><a href="https://www.nuget.org/packages/SuperConvert/1.0.3" target="_blank">[https://www.nuget.org/packages/SuperConvert/1.0.3]</a></td>
+                        </tr>
+                        <tr></a>
+                            <td>1.0.2</td>
+                            <td><a href="https://www.nuget.org/packages/SuperConvert/1.0.2" target="_blank">[https://www.nuget.org/packages/SuperConvert/1.0.2]</a></td>
+                        </tr>
+                        <tr>
+                            <td>1.0.1</td>
+                            <td><a href="https://www.nuget.org/packages/SuperConvert/1.0.1" target="_blank">[https://www.nuget.org/packages/SuperConvert/1.0.1]</a></td>
+                        </tr>
+                        <tr>
+                            <td>1.0.0</td>
+                            <td><a href="https://www.nuget.org/packages/SuperConvert/1.0.0" target="_blank">[https://www.nuget.org/packages/SuperConvert/1.0.0]</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane active col-md-6" id="readme-tab" aria-label="Readme tab content">
+        <div class="readme-common">
+            <div id="readme-container">
+            </div>
+        </div>
+    </div>
+</div>
