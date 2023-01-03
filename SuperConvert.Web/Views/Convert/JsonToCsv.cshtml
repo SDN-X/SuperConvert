@@ -19,7 +19,7 @@
             <div class="col-md-3"><a asp-action="index" class="btn" id="minify"><i class="fa-solid fa-arrow-left fa-beat"></i> Back</a></div>
             <div class="col-md-3"><a class="btn" id="minify">Minify</a></div>
             <div class="col-md-3"><a class="btn" id="beautify">Beautify</a></div>
-            <form method="post" asp-action="JsonToCsv" class="col-md-3">
+            <form method="post" id="JsonToCsvForm" asp-action="JsonToCsv" class="col-md-3">
                 <input name="jsonString" id="jsonString" type="hidden" /> <div><button type="submit" class="btn" id="toCsv">To Csv <i class="fa-solid fa-arrow-right fa-beat"></i> </button></div>
            </form> 
         </div>

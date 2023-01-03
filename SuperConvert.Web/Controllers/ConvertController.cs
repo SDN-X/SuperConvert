@@ -55,8 +55,9 @@ namespace SuperConvert.Web.Controllers
             var respone = jsonString.ToCsv(path, fileName);
             if (path != null)
             {
-                var memory = DownloadSinghFile(fileName, subFolder);
-                return File(memory.ToArray(), "text/csv", fileName);
+                var memory = DownloadSinghFile($"{fileName}.csv", subFolder);
+
+                return File(memory.ToArray(), "text/csv", $"{fileName}.csv");
             }
 
             Models.ConvertViewModel model = new Models.ConvertViewModel
@@ -75,8 +76,9 @@ namespace SuperConvert.Web.Controllers
             {
                 var net = new System.Net.WebClient();
                 var data = net.DownloadData(path);
-                var content = new System.IO.MemoryStream(data);
+                var content = new MemoryStream(data);
                 memory = content;
+                System.IO.File.Delete(path);
             }
             memory.Position = 0;
             return memory;

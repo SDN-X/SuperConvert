@@ -4,13 +4,13 @@
     ViewData["Title"] = "Convert Now !";
 }
 
-<h1>@ViewData["Title"]</h1>
+<h1>Convert Now <i class="fa-solid fa-exclamation fa-beat"></i></h1>
 
 <div class="row">
     <div class="col-sm-3">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Gregorian To Hijri</h5>
+                <h5 class="card-title">Gregorian <i class="fa-solid fa-arrow-right fa-beat"></i> Hijri</h5>
                 <p class="card-text">Choose your Gregorian date and convert it into Hijri date.</p>
                 <a asp-action="GregorianToHijri" class="btn btn-primary">Convert Now</a>
             </div>
@@ -19,7 +19,7 @@
     <div class="col-sm-3">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Json To Csv</h5>
+                <h5 class="card-title">Json <i class="fa-solid fa-arrow-right-arrow-left fa-beat"></i> Csv</h5>
                 <p class="card-text">Paste your json text and convert to download Csv file.</p>
                 <a asp-action="JsonToCsv" class="btn btn-primary">Convert Now</a>
             </div>
