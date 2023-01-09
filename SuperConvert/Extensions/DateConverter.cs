@@ -68,5 +68,24 @@ namespace SuperConvert.Extensions
             }
             return result;
         }
+        /// <summary>
+        /// Checks if current birthday's age is bigger than specified age
+        /// </summary>
+        /// <param name="birthDate"></param>
+        /// <returns>bool</returns>
+        public static bool IsAgeGreaterThan(this DateTime birthDate, int age) => birthDate < DateTime.UtcNow.Subtract(new TimeSpan(365 * age, 0, 0, 0));
+
+        /// <summary>
+        /// Checks if current birthday's age is smaller than specified age
+        /// </summary>
+        /// <param name="birthDate"></param>
+        /// <returns>bool</returns>
+        public static bool IsAgeLessThan(this DateTime birthDate, int age) => birthDate > DateTime.UtcNow.Subtract(new TimeSpan(365 * age, 0, 0, 0));
+        /// <summary>
+        /// Checks if current birthday's age is equals than specified age
+        /// </summary>
+        /// <param name="birthDate"></param>
+        /// <returns>bool</returns>
+        public static bool IsAgeEqualsTo(this DateTime birthDate, int age) => age==DateTime.Now.Year-birthDate.Year;
     }
 }

@@ -25,6 +25,10 @@ namespace SuperConvert.Extensions.Helpers
         /// <exception cref="Exception"></exception>
         internal static DataTable JsonToDataTable(string data, string tableName = "")
         {
+            if (!data.Contains("["))
+                data = data.Insert(0, "[");
+            if (!data.Contains("]"))
+                data = data.Insert(data.Length, "]");
             DataTable dt = new DataTable(tableName);
             List<Dictionary<string, object>> dictionaryRows;
             try

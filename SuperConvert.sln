@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperConvert", "SuperConver
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperConvert.ConsoleApp", "SuperConvert.ConsoleApp\SuperConvert.ConsoleApp.csproj", "{8FA35B79-5787-41F8-BB03-A3F153C5E4FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperConvert.Files", "SuperConvert.Files\SuperConvert.Files.csproj", "{EE20BFB9-FA13-4C3D-9124-E154B0199639}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperConvert.Files", "SuperConvert.Files\SuperConvert.Files.csproj", "{EE20BFB9-FA13-4C3D-9124-E154B0199639}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
