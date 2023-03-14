@@ -1,5 +1,5 @@
-﻿## Current version 1.0.3.7
-## Next version 1.0.3.8
+﻿## Current version 1.0.4.0
+## Next version 1.0.4.1
 
 ## Building new version
  - After editing the version on .csproj file CD to the project path "repos\SuperConvert\SuperConvert" and Run=>
