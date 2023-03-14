@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SuperConvert.Extensions.Helpers;
 
-namespace SuperConvert.Extensions.Excel
+namespace SuperConvert.Extensions
 {
     public static class ExcelConverter
     {
@@ -44,5 +44,7 @@ namespace SuperConvert.Extensions.Excel
         /// <returns></returns>
         public static DataTable CsvToDataTable(string filePath) =>
             SuperHelper.ConvertCsvToDatatable(filePath);
+        public static string ToXls(this string jsonString, string fileName, string path) => SuperHelper.ConvertJsonToXls(jsonString, fileName, path);
+        public static string ToXls(this DataTable dataTable, string fileName, string path) => SuperHelper.ConvertDatatableToXls(dataTable, fileName, path);
     }
 }
