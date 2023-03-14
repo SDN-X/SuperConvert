@@ -22,10 +22,15 @@ SuperConvert is a tool to convert your data in c#
 - DataTable convert to Csv
 - Csv convert to Json
 - Csv convert to DataTable
+- Json to Xls
+- Datatable to Xls
 
-## Coming soon !
+- Excel sheets (XLS, XLSX) and other data containers/types is already here
+Jusi use 
 
-- Excel sheets (XLS, XLSX) and other data containers/types
+```cs
+ .ToXls() 
+```
 
 ## Tech
 
@@ -94,6 +99,9 @@ DataTable csvDt = ExcelConverter.CsvToDataTable(csvPath);
 ```
 | Version | README |
 | ------  | ------ |
+| 1.0.4.1 | https://www.nuget.org/packages/SuperConvert/1.0.4.1|
+| 1.0.4 | [Deprecated]|
+| 1.0.3.7 | https://www.nuget.org/packages/SuperConvert/1.0.3.7|
 | 1.0.3.6 | https://www.nuget.org/packages/SuperConvert/1.0.3.6|
 | 1.0.3.5 | https://www.nuget.org/packages/SuperConvert/1.0.3.5|
 | 1.0.3.4 | https://www.nuget.org/packages/SuperConvert/1.0.3.4|
