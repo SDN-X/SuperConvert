@@ -82,4 +82,11 @@ DateTime birthDate = new DateTime(1993,08,09);
 Console.WriteLine($"birthDate: {birthDate} is age = 29 ? {birthDate.IsAgeEqualsTo(29)}");
 Console.WriteLine($"birthDate: {birthDate} is age > 28 ? {birthDate.IsAgeGreaterThan(28)}"); 
 Console.WriteLine($"birthDate: {birthDate} is age < 25 ? {birthDate.IsAgeLessThan(25)}");
+
+
+
+var xlsPath = customers.ToXls(Guid.NewGuid().ToString(), ""); 
+var xlsPathFromDt = dt.ToXls(Guid.NewGuid().ToString(), "");
+
+
 Console.ReadLine();
