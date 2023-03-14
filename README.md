@@ -26,7 +26,7 @@ SuperConvert is a tool to convert your data in c#
 - Datatable to Xls
 
 - Excel sheets (XLS, XLSX) and other data containers/types is already here
-Jusi use 
+Just use 
 
 ```cs
  .ToXls() 
@@ -46,7 +46,7 @@ SuperConvet's code is based on .net core technology (netcoreapp3.1, net5.0, net6
 Run the command on your nuget package console .
 
 ```sh
-Install-Package SuperConvert -Version 1.0.3.6
+Install-Package SuperConvert -Version 1.0.4.1
 ```
 ## Or 
 
