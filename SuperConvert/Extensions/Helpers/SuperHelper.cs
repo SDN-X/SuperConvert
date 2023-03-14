@@ -205,30 +205,7 @@ namespace SuperConvert.Extensions.Helpers
         /// </summary>
         internal static string Serialize<T>(T item) => JsonSerializer.Serialize(item);
 
-        internal static string ConvertJsonToXls(string jsonString, string fileName, string path)
-        {
-            DataTable dt = JsonToDataTable(jsonString);
-
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < dt.Columns.Count; i++)
-            {
-                sb.Append(dt.Columns[i].ColumnName + "\t");
-            }
-            sb.Append("\n");
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                for (int j = 0; j < dt.Columns.Count; j++)
-                {
-                    sb.Append(dt.Rows[i][j].ToString() + "\t");
-                }
-                sb.Append("\n");
-            }
-
-            string fullPath = Path.Combine(path, $"{fileName}.xls");
-
-            File.WriteAllText(fullPath, sb.ToString());
-            return fullPath;
-        }
+        internal static string ConvertJsonToXls(string jsonString, string fileName, string path) => ConvertDatatableToXls(JsonToDataTable(jsonString), fileName, path);
 
         internal static string ConvertDatatableToXls(DataTable dataTable, string fileName, string path)
         {
