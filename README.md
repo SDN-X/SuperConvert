@@ -46,7 +46,7 @@ SuperConvet's code is based on .net core technology (netcoreapp3.1, net5.0, net6
 Run the command on your nuget package console .
 
 ```sh
-Install-Package SuperConvert -Version 1.0.4.1
+Install-Package SuperConvert -Version 1.0.4.2
 ```
 ## Or 
 
@@ -99,16 +99,17 @@ DataTable csvDt = ExcelConverter.CsvToDataTable(csvPath);
 ```
 | Version | README |
 | ------  | ------ |
-| 1.0.4.1 | https://www.nuget.org/packages/SuperConvert/1.0.4.1|
+| 1.0.4.2 | https://www.nuget.org/packages/SuperConvert/1.0.4.2
+| 1.0.4.1 | [Deprecated]|
 | 1.0.4 | [Deprecated]|
-| 1.0.3.7 | https://www.nuget.org/packages/SuperConvert/1.0.3.7|
-| 1.0.3.6 | https://www.nuget.org/packages/SuperConvert/1.0.3.6|
-| 1.0.3.5 | https://www.nuget.org/packages/SuperConvert/1.0.3.5|
-| 1.0.3.4 | https://www.nuget.org/packages/SuperConvert/1.0.3.4|
-| 1.0.3.3 | https://www.nuget.org/packages/SuperConvert/1.0.3.3|
-| 1.0.3.2 | https://www.nuget.org/packages/SuperConvert/1.0.3.2|
-| 1.0.3.1 | [Deprecated] |
-| 1.0.3 | https://www.nuget.org/packages/SuperConvert/1.0.3|
-| 1.0.2 | https://www.nuget.org/packages/SuperConvert/1.0.2|
-| 1.0.1 | https://www.nuget.org/packages/SuperConvert/1.0.1|
-| 1.0.0 | https://www.nuget.org/packages/SuperConvert/1.0.0|
+| 1.0.3.7 | https://www.nuget.org/packages/SuperConvert/1.0.3.7
+| 1.0.3.6 | https://www.nuget.org/packages/SuperConvert/1.0.3.6
+| 1.0.3.5 | https://www.nuget.org/packages/SuperConvert/1.0.3.5
+| 1.0.3.4 | https://www.nuget.org/packages/SuperConvert/1.0.3.4
+| 1.0.3.3 | https://www.nuget.org/packages/SuperConvert/1.0.3.3
+| 1.0.3.2 | https://www.nuget.org/packages/SuperConvert/1.0.3.2
+| 1.0.3.1 | [Deprecated] 
+| 1.0.3 | https://www.nuget.org/packages/SuperConvert/1.0.3
+| 1.0.2 | https://www.nuget.org/packages/SuperConvert/1.0.2
+| 1.0.1 | https://www.nuget.org/packages/SuperConvert/1.0.1
+| 1.0.0 | https://www.nuget.org/packages/SuperConvert/1.0.0
