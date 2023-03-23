@@ -24,5 +24,9 @@
 			<PackagePath>\</PackagePath>
 		</None>
 	</ItemGroup>
-
+	<ItemGroup>
+		<Compile Update="@(Compile)">
+			<Visible Condition="'%(NuGetItemType)' == 'Compile' and '%(NuGetPackageId)' == 'SuperConvert'">false</Visible>
+		</Compile>
+	</ItemGroup>
 </Project>
