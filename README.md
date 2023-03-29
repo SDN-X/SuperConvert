@@ -1,7 +1,7 @@
 # Super Convert
 ## _Make your data conversion_
 
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://github.com/esamelzain/SuperConvert)
+[![Build Status](https://github.com/dwyl/repo-badges/blob/main/svg/build-passing.svg)](https://github.com/esamelzain/SuperConvert)
 
 SuperConvert is a tool to convert your data in c#
 - Create some json strings / Data tables
