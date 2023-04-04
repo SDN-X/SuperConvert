@@ -44,7 +44,7 @@ namespace SuperConvert.Extensions
         /// <returns></returns>
         public static DataTable CsvToDataTable(string filePath) =>
             SuperHelper.ConvertCsvToDatatable(filePath);
-        public static string ToXls(this string jsonString, string fileName, string path) => SuperHelper.ConvertJsonToXls(jsonString, fileName, path);
-        public static string ToXls(this DataTable dataTable, string fileName, string path) => SuperHelper.ConvertDatatableToXls(dataTable, fileName, path);
+        public static string ToXls(this string jsonString, string path, string fileName) => SuperHelper.ConvertJsonToXls(jsonString, fileName, path);
+        public static string ToXls(this DataTable dataTable, string path, string fileName) => SuperHelper.ConvertDatatableToXls(dataTable, fileName, path);
     }
 }
