@@ -100,7 +100,8 @@ DataTable csvDt = ExcelConverter.CsvToDataTable(csvPath);
 ```
 | Version | README |
 | ------  | ------ |
-| 1.0.4.2 | https://www.nuget.org/packages/SuperConvert/1.0.4.3
+| 1.0.4.4 | https://www.nuget.org/packages/SuperConvert/1.0.4.4
+| 1.0.4.3 | https://www.nuget.org/packages/SuperConvert/1.0.4.3
 | 1.0.4.2 | https://www.nuget.org/packages/SuperConvert/1.0.4.2
 | 1.0.4.1 | [Deprecated]|
 | 1.0.4 | [Deprecated]|
