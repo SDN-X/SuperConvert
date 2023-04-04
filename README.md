@@ -90,6 +90,12 @@ fileName = "JsonToExcel";
 path = string.Empty;
 string csvPath = json.ToCsv(path, fileName)
 ```
+## Json To XLS
+```cs
+fileName = "JsonToExcel";
+path = string.Empty;
+string csvPath = json.ToXls(path, fileName)
+```
 ## CSV To Json
 ```cs
 string jsonFromCsv = ExcelConverter.CsvToJson(csvPath);
