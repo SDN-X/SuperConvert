@@ -19,8 +19,10 @@ namespace SuperConvert.Extensions
         /// <param name="fileName"></param>
         /// <returns></returns>
         public static string ToCsv(this DataTable dataTable, string path = "", string fileName = "excel") =>
-                 SuperHelper.DataTableToExcel(dataTable, path, fileName);
+                 SuperHelper.DataTableToCsv(dataTable, path, fileName);
 
+        public static byte[] ToCsv(this DataTable dataTable) =>
+                 SuperHelper.DataTableToCsv(dataTable);
         /// <summary>
         /// Converting json To CSV
         /// </summary>
@@ -29,7 +31,10 @@ namespace SuperConvert.Extensions
         /// <param name="fileName"></param>
         /// <returns></returns>
         public static string ToCsv(this string jsonData, string path = "", string fileName = "excel") =>
-             SuperHelper.JsonToExcel(jsonData, path, fileName);
+             SuperHelper.JsonToCsv(jsonData, path, fileName);
+
+        public static byte[] ToCsv(this string jsonData) =>
+            SuperHelper.JsonToCsv(jsonData);
         /// <summary>
         /// Converting Csv to json, receives the csv path and returns json object 
         /// </summary>
@@ -45,6 +50,10 @@ namespace SuperConvert.Extensions
         public static DataTable CsvToDataTable(string filePath) =>
             SuperHelper.ConvertCsvToDatatable(filePath);
         public static string ToXls(this string jsonString, string path, string fileName) => SuperHelper.ConvertJsonToXls(jsonString, fileName, path);
-        public static string ToXls(this DataTable dataTable, string path, string fileName) => SuperHelper.ConvertDatatableToXls(dataTable, fileName, path);
+        public static string ToXls(this DataTable dataTable, string path, string fileName) => SuperHelper.ConvertDataTableToXls(dataTable, fileName, path);
+
+
+        public static byte[] ToXls(this string jsonString) => SuperHelper.ConvertJsonToXls(jsonString);
+        public static byte[] ToXls(this DataTable dataTable) => SuperHelper.ConvertDataTableToXls(dataTable);
     }
 }

@@ -107,7 +107,7 @@ namespace SuperConvert.Extensions.Helpers
         /// </summary>
         /// <param name="dataTable"></param>
         /// <returns></returns>
-        internal static string DataTableToExcel(DataTable dataTable, string path, string fileName)
+        internal static string DataTableToCsv(DataTable dataTable, string path, string fileName)
         {
             var lines = new List<string>();
 
@@ -125,32 +125,35 @@ namespace SuperConvert.Extensions.Helpers
             File.WriteAllLines(fullPath, lines);
             return fullPath;
         }
+        internal static byte[] DataTableToCsv(DataTable dataTable)
+        {
+            var lines = new List<string>();
+
+            string[] columnNames = dataTable.Columns
+                .Cast<DataColumn>()
+                .Select(column => column.ColumnName)
+                .ToArray();
+
+            var header = string.Join(",", columnNames.Select(name => $"\"{name}\""));
+            lines.Add(header);
+
+            var valueLines = dataTable.AsEnumerable()
+                .Select(row => string.Join(",", row.ItemArray.Select(val => $"\"{val}\"")));
+            lines.AddRange(valueLines);
+
+            string data = string.Join("\n", lines);
+            byte[] byteArray = Encoding.UTF8.GetBytes(data);
+
+            return byteArray;
+        }
+
         /// <summary>
         /// Converting dataTable To excel
         /// </summary>
         /// <param name="dataTable"></param>
         /// <returns></returns>
-        internal static string JsonToExcel(string json, string path, string fileName)
-        {
-            DataTable dataTable = JsonToDataTable(json, fileName);
-            var lines = new List<string>();
-
-            string[] columnNames = dataTable.Columns
-                .Cast<DataColumn>()
-                .Select(column => column.ColumnName)
-                .ToArray();
-
-            var header = string.Join(",", columnNames.Select(name => $"\"{name}\""));
-            lines.Add(header);
-
-            var valueLines = dataTable.AsEnumerable()
-                .Select(row => string.Join(",", row.ItemArray.Select(val => $"\"{val}\"")));
-            lines.AddRange(valueLines);
-            string fullPath = Path.Combine(path, $"{fileName}.csv");
-            File.WriteAllLines(fullPath, lines);
-            return fullPath;
-        }
-
+        internal static string JsonToCsv(string json, string path, string fileName) => DataTableToCsv(JsonToDataTable(json, fileName), path, fileName);
+        internal static byte[] JsonToCsv(string json ) => DataTableToCsv(JsonToDataTable(json));
         internal static string ConvertCsvToJson(string filePath)
         {
             var csv = new List<string[]>();
@@ -174,8 +177,6 @@ namespace SuperConvert.Extensions.Helpers
 
             return Serialize(listObjResult);
         }
-
-
         internal static DataTable ConvertCsvToDatatable(string filePath) =>
             ConvertCsvToJson(filePath).ToDataTable();
         #endregion
@@ -205,9 +206,9 @@ namespace SuperConvert.Extensions.Helpers
         /// </summary>
         internal static string Serialize<T>(T item) => JsonSerializer.Serialize(item);
 
-        internal static string ConvertJsonToXls(string jsonString, string fileName, string path) => ConvertDatatableToXls(JsonToDataTable(jsonString), fileName, path);
-
-        internal static string ConvertDatatableToXls(DataTable dataTable, string fileName, string path)
+        internal static string ConvertJsonToXls(string jsonString, string fileName, string path) => ConvertDataTableToXls(JsonToDataTable(jsonString), fileName, path);
+        internal static byte[] ConvertJsonToXls(string jsonString) => ConvertDataTableToXls(JsonToDataTable(jsonString));
+        internal static string ConvertDataTableToXls(DataTable dataTable, string fileName, string path)
         {
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < dataTable.Columns.Count; i++)
@@ -229,6 +230,29 @@ namespace SuperConvert.Extensions.Helpers
             File.WriteAllText(fullPath, sb.ToString());
             return fullPath;
         }
+        internal static byte[] ConvertDataTableToXls(DataTable dataTable)
+        {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < dataTable.Columns.Count; i++)
+            {
+                sb.Append(dataTable.Columns[i].ColumnName + "\t");
+            }
+            sb.Append("\n");
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                for (int j = 0; j < dataTable.Columns.Count; j++)
+                {
+                    sb.Append(dataTable.Rows[i][j].ToString() + "\t");
+                }
+                sb.Append("\n");
+            }
+
+            string data = sb.ToString();
+            byte[] byteArray = Encoding.UTF8.GetBytes(data);
+
+            return byteArray;
+        }
+
         #endregion
     }
 }
