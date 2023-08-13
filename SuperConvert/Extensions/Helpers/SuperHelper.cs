@@ -107,7 +107,7 @@ namespace SuperConvert.Extensions.Helpers
         /// </summary>
         /// <param name="dataTable"></param>
         /// <returns></returns>
-        internal static string DataTableToCsv(DataTable dataTable, string path, string fileName)
+        internal static string DataTableToCsv(DataTable dataTable, string path, string fileName, char seperator)
         {
             var lines = new List<string>();
 
@@ -116,16 +116,16 @@ namespace SuperConvert.Extensions.Helpers
                 .Select(column => column.ColumnName)
                 .ToArray();
 
-            var header = string.Join(",", columnNames.Select(name => $"\"{name}\""));
+            var header = string.Join(seperator, columnNames.Select(name => $"\"{name}\""));
             lines.Add(header);
             var valueLines = dataTable.AsEnumerable()
-                .Select(row => string.Join(",", row.ItemArray.Select(val => $"\"{val}\"")));
+                .Select(row => string.Join(seperator, row.ItemArray.Select(val => $"\"{val}\"")));
             lines.AddRange(valueLines);
             string fullPath = Path.Combine(path, $"{fileName}.csv");
             File.WriteAllLines(fullPath, lines);
             return fullPath;
         }
-        internal static byte[] DataTableToCsv(DataTable dataTable)
+        internal static byte[] DataTableToCsv(DataTable dataTable, char seperator)
         {
             var lines = new List<string>();
 
@@ -134,11 +134,11 @@ namespace SuperConvert.Extensions.Helpers
                 .Select(column => column.ColumnName)
                 .ToArray();
 
-            var header = string.Join(",", columnNames.Select(name => $"\"{name}\""));
+            var header = string.Join(seperator, columnNames.Select(name => $"\"{name}\""));
             lines.Add(header);
 
             var valueLines = dataTable.AsEnumerable()
-                .Select(row => string.Join(",", row.ItemArray.Select(val => $"\"{val}\"")));
+                .Select(row => string.Join(seperator, row.ItemArray.Select(val => $"\"{val}\"")));
             lines.AddRange(valueLines);
 
             string data = string.Join("\n", lines);
@@ -152,8 +152,8 @@ namespace SuperConvert.Extensions.Helpers
         /// </summary>
         /// <param name="dataTable"></param>
         /// <returns></returns>
-        internal static string JsonToCsv(string json, string path, string fileName) => DataTableToCsv(JsonToDataTable(json, fileName), path, fileName);
-        internal static byte[] JsonToCsv(string json ) => DataTableToCsv(JsonToDataTable(json));
+        internal static string JsonToCsv(string json, string path, string fileName, char seperator) => DataTableToCsv(JsonToDataTable(json, fileName), path, fileName, seperator);
+        internal static byte[] JsonToCsv(string json, char seperator) => DataTableToCsv(JsonToDataTable(json), seperator);
         internal static string ConvertCsvToJson(string filePath)
         {
             var csv = new List<string[]>();

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SuperConvert.Extensions.Helpers;
+using SuperConvert.Statics;
 
 namespace SuperConvert.Extensions
 {
@@ -18,11 +19,11 @@ namespace SuperConvert.Extensions
         /// <param name="path"></param>
         /// <param name="fileName"></param>
         /// <returns></returns>
-        public static string ToCsv(this DataTable dataTable, string path = "", string fileName = "excel") =>
-                 SuperHelper.DataTableToCsv(dataTable, path, fileName);
+        public static string ToCsv(this DataTable dataTable, string path = "", string fileName = "excel", char seperator = SuperConvertExcelSeperator.COMMA) =>
+                 SuperHelper.DataTableToCsv(dataTable, path, fileName, seperator);
 
-        public static byte[] ToCsv(this DataTable dataTable) =>
-                 SuperHelper.DataTableToCsv(dataTable);
+        public static byte[] ToCsv(this DataTable dataTable, char seperator = SuperConvertExcelSeperator.COMMA) =>
+                 SuperHelper.DataTableToCsv(dataTable, seperator);
         /// <summary>
         /// Converting json To CSV
         /// </summary>
@@ -30,11 +31,11 @@ namespace SuperConvert.Extensions
         /// <param name="path"></param>
         /// <param name="fileName"></param>
         /// <returns></returns>
-        public static string ToCsv(this string jsonData, string path = "", string fileName = "excel") =>
-             SuperHelper.JsonToCsv(jsonData, path, fileName);
+        public static string ToCsv(this string jsonData, string path = "", string fileName = "excel", char seperator = SuperConvertExcelSeperator.COMMA) =>
+             SuperHelper.JsonToCsv(jsonData, path, fileName, seperator);
 
-        public static byte[] ToCsv(this string jsonData) =>
-            SuperHelper.JsonToCsv(jsonData);
+        public static byte[] ToCsv(this string jsonData, char seperator = SuperConvertExcelSeperator.COMMA) =>
+            SuperHelper.JsonToCsv(jsonData, seperator);
         /// <summary>
         /// Converting Csv to json, receives the csv path and returns json object 
         /// </summary>
