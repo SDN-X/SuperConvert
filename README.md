@@ -1,7 +1,10 @@
 # Super Convert
-## _Make your data conversion simply_ 
+## _Make your data conversion_
 
-[![Build Status](https://github.com/dwyl/repo-badges/blob/main/svg/build-passing.svg)](https://github.com/esamelzain/SuperConvert)
+[![BuildStatus](https://img.shields.io/github/workflow/status/SDN-X/SuperConvert/Build%20and%20Test)](https://github.com/SDN-X/SuperConvert/actions)
+[![codecov](https://codecov.io/gh/esamelzain/SuperConvert/branch/main/graph/badge.svg)](https://codecov.io/gh/esamelzain/SuperConvert)
+[![License](https://img.shields.io/github/license/SDN-X/SuperConvert)](https://github.com/SDN-X/SuperConvert/blob/master/LICENSE.txt)
+
 
 🚀 SuperConvert is the ultimate tool for data conversion in C#/.NET! It supports JSON, XML, CSV, XLS and much more! With SuperConvert, you can easily convert any data format to another with just a few lines of code. 💪
 
@@ -106,7 +109,8 @@ DataTable csvDt = ExcelConverter.CsvToDataTable(csvPath);
 ```
 | Version | README |
 | ------  | ------ |
-| 1.0.4.5 | https://www.nuget.org/packages/SuperConvert/1.0.4.5
+| 1.0.4.4 | https://www.nuget.org/packages/SuperConvert/1.0.4.6
+| 1.0.4.4 | https://www.nuget.org/packages/SuperConvert/1.0.4.5
 | 1.0.4.4 | https://www.nuget.org/packages/SuperConvert/1.0.4.4
 | 1.0.4.3 | https://www.nuget.org/packages/SuperConvert/1.0.4.3
 | 1.0.4.2 | https://www.nuget.org/packages/SuperConvert/1.0.4.2
