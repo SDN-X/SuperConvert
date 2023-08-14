@@ -21,6 +21,10 @@
 			<PackagePath>\</PackagePath>
 		</None>
 	</ItemGroup>
+	
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+	</ItemGroup>
 	<ItemGroup>
 		<Compile Update="@(Compile)">
 			<Visible Condition="'%(NuGetItemType)' == 'Compile' and '%(NuGetPackageId)' == 'SuperConvert'">false</Visible>

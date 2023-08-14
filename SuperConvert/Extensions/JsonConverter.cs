@@ -20,8 +20,6 @@ namespace SuperConvert.Extensions
                 ? throw new ArgumentNullException("String value can not be empty or null!")
                 : SuperHelper.JsonToDataTable(jsonString, tableName);
 
-
-
         /// <summary>
         /// Converts from DataTable to List of object ,Returned Json will be List of objects 
         /// </summary>
