@@ -49,7 +49,7 @@ namespace SuperConvert.Extensions
         /// <param name="returnedType"></param>
         /// <param name="serializeOptions"></param>
         /// <returns>object</returns>
-        public static object SafeDeserialize(this string json, Type returnedType, JsonSerializerOptions? serializeOptions = null)
+        public static object? SafeDeserialize(this string json, Type returnedType, JsonSerializerOptions? serializeOptions = null)
             => JsonSerializer.Deserialize(json, returnedType, serializeOptions ?? new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
     }
 }

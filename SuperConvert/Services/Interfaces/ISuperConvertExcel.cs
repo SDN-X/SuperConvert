@@ -2,7 +2,7 @@
 using System.Data;
 
 
-namespace SuperConvert
+namespace SuperConvert.Services
 {
     public interface ISuperConvertExcel
     {
