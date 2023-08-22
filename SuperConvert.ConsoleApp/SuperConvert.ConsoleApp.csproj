@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SuperConvert.Abstraction\SuperConvert.Abstraction.csproj" />
     <ProjectReference Include="..\SuperConvert\SuperConvert.csproj" />
   </ItemGroup>
 

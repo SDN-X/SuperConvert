@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using SuperConvert.Abstraction;
+using SuperConvert.Abstraction.Extensions;
 using SuperConvert.Extensions;
-using SuperConvert.Services;
 using SuperConvert.Statics;
 using System.Data;
 
@@ -34,8 +35,8 @@ Console.WriteLine($"HijriToGregorian \n {gregorian.ToString("dd/MM/yyyy")} \n");
 
 //DI
 IServiceCollection services = new ServiceCollection();
-services.AddScoped<ISuperConvertExcel, SuperConvertExcel>();
-var excelHandler = services.BuildServiceProvider().GetRequiredService<ISuperConvertExcel>();
+services.UseSuperConvertExcelService();
+var excelHandler = services.BuildServiceProvider().GetRequiredService<ISuperConvertExcelService>();
 
 
 //Datatble To CSV

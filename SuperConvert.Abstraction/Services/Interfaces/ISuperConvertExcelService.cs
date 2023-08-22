@@ -2,9 +2,9 @@
 using System.Data;
 
 
-namespace SuperConvert.Services
+namespace SuperConvert.Abstraction
 {
-    public interface ISuperConvertExcel
+    public interface ISuperConvertExcelService
     {
         /// <summary>
         /// Converting dataTable To CSV

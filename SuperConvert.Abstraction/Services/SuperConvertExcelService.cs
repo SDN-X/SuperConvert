@@ -2,9 +2,9 @@
 using SuperConvert.Statics;
 using SuperConvert.Extensions.Helpers;
 
-namespace SuperConvert.Services
+namespace SuperConvert.Abstraction
 {
-    public class SuperConvertExcel : ISuperConvertExcel
+    internal class SuperConvertExcelService : ISuperConvertExcelService
     {
         /// <summary>
         /// Converting dataTable To CSV, 
