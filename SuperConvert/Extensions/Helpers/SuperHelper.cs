@@ -11,6 +11,7 @@ using System.Xml.Linq;
 using System.Xml;
 
 [assembly: InternalsVisibleTo("SuperConvert.Files")]
+[assembly: InternalsVisibleTo("SuperConvert.Abstraction")]
 namespace SuperConvert.Extensions.Helpers
 {
     public static class SuperHelper

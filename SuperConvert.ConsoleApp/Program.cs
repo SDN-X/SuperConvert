@@ -1,4 +1,7 @@
-﻿using SuperConvert.Extensions;
+﻿using Microsoft.Extensions.DependencyInjection;
+using SuperConvert.Abstraction;
+using SuperConvert.Abstraction.Extensions;
+using SuperConvert.Extensions;
 using SuperConvert.Statics;
 using System.Data;
 
@@ -15,6 +18,7 @@ foreach (DataRow row in dt.Rows)
     Console.WriteLine("\n ");
 }
 
+
 //DataTable to json
 string json = dt.ToJson();
 Console.WriteLine($"Json: \n {json} \n");
@@ -28,10 +32,17 @@ Console.WriteLine($"GregorianToHijri \n {hijri.ToString("dd/MM/yyyy")}\n");
 DateTime gregorian = DateConverter.HijriToGregorian(hijri);
 Console.WriteLine($"HijriToGregorian \n {gregorian.ToString("dd/MM/yyyy")} \n");
 
+
+//DI
+IServiceCollection services = new ServiceCollection();
+services.UseSuperConvertExcelService();
+var excelHandler = services.BuildServiceProvider().GetRequiredService<ISuperConvertExcelService>();
+
+
 //Datatble To CSV
 string path = string.Empty;
 string fileName = "DtToExcel";
-string csvPath = dt.ToCsv(path, fileName);
+string csvPath = excelHandler.DataTableToCsv(dt, fileName: fileName);//dt.ToCsv(path, fileName);
 Console.WriteLine($"the file {csvPath} has been successfully saved\n");
 
 //Json To CSV
@@ -39,10 +50,10 @@ fileName = "JsonToExcel";
 Console.WriteLine($"the file {json.ToCsv(path, fileName,SuperConvertExcelSeperator.SEMICOLON)} has been successfully saved\n");
 
 //CSV To Json
-Console.WriteLine($"CSV To Json {ExcelConverter.CsvToJson(csvPath)}\n");
+Console.WriteLine($"CSV To Json {excelHandler.CsvToJson(csvPath)}\n");
 
 //CSV To Datatable
-DataTable csvDt = ExcelConverter.CsvToDataTable(csvPath);
+DataTable csvDt = excelHandler.CsvToDataTable(csvPath);
 Console.WriteLine($"CSV To Datatable: \n");
 foreach (DataRow row in csvDt.Rows)
 {
@@ -86,8 +97,8 @@ Console.WriteLine($"birthDate: {birthDate} is age < 25 ? {birthDate.IsAgeLessTha
 
 
 
-var xlsPath = customers.ToXls("", Guid.NewGuid().ToString());
-var xlsPathFromDt = dt.ToXls("", Guid.NewGuid().ToString());
+var xlsPath = excelHandler.JsonToXls(customers,"", Guid.NewGuid().ToString());
+var xlsPathFromDt = excelHandler.DataTableToXls(dt,"", Guid.NewGuid().ToString());
 
 
 Console.ReadLine();
