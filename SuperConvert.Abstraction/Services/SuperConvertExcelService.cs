@@ -1,6 +1,23 @@
-﻿using System.Data;
-using SuperConvert.Statics;
+﻿/* Unmerged change from project 'SuperConvert.Abstraction (net6.0)'
+Before:
 using SuperConvert.Extensions.Helpers;
+After:
+using System.Data;
+*/
+
+/* Unmerged change from project 'SuperConvert.Abstraction (netcoreapp3.1)'
+Before:
+using SuperConvert.Extensions.Helpers;
+After:
+using System.Data;
+*/
+
+/* Unmerged change from project 'SuperConvert.Abstraction (net5.0)'
+Before:
+using SuperConvert.Extensions.Helpers;
+After:
+using System.Data;
+*/
 
 namespace SuperConvert.Abstraction
 {

@@ -1,5 +1,4 @@
-﻿using SuperConvert.Statics;
-using System.Data;
+﻿using System.Data;
 
 
 namespace SuperConvert.Abstraction
