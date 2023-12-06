@@ -1,10 +1,5 @@
-﻿using SuperConvert.Extensions.Interfaces;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SuperConvert.Extensions
 {
@@ -86,6 +81,6 @@ namespace SuperConvert.Extensions
         /// </summary>
         /// <param name="birthDate"></param>
         /// <returns>bool</returns>
-        public static bool IsAgeEqualsTo(this DateTime birthDate, int age) => age==DateTime.Now.Year-birthDate.Year;
+        public static bool IsAgeEqualsTo(this DateTime birthDate, int age) => age == DateTime.Now.Year - birthDate.Year;
     }
 }

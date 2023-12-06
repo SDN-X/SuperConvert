@@ -1,10 +1,5 @@
 ﻿using SuperConvert.Extensions.Helpers;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SuperConvert.Files.Extensions
 {
