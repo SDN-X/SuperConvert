@@ -20,8 +20,6 @@ namespace SuperConvert.Extensions
                 ? throw new ArgumentNullException("String value can not be empty or null!")
                 : SuperHelper.JsonToDataTable(jsonString, tableName);
 
-
-
         /// <summary>
         /// Converts from DataTable to List of object ,Returned Json will be List of objects 
         /// </summary>
@@ -51,7 +49,7 @@ namespace SuperConvert.Extensions
         /// <param name="returnedType"></param>
         /// <param name="serializeOptions"></param>
         /// <returns>object</returns>
-        public static object SafeDeserialize(this string json, Type returnedType, JsonSerializerOptions? serializeOptions = null)
+        public static object? SafeDeserialize(this string json, Type returnedType, JsonSerializerOptions? serializeOptions = null)
             => JsonSerializer.Deserialize(json, returnedType, serializeOptions ?? new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
     }
 }
