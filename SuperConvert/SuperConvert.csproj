@@ -1,10 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>netcoreapp3.1;net5.0;net6.0;net7.0</TargetFrameworks>
+		<TargetFrameworks>netcoreapp3.1;net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
 		<Nullable>enable</Nullable>
 		<Title>Super Convert</Title>
-		<Version>1.0.4.8</Version>
+		<Version>1.0.4.9</Version>
 		<Description>
 			🚀 SuperConvert is the ultimate tool for data conversion in C#/.NET! It supports JSON, XML, CSV, XLS and much more! With SuperConvert, you can easily convert any data format to another with just a few lines of code. 💪
 			📖 Its documentation provides clear and detailed explanations of all the methods and features available, making it easy to use and master. 🤓
