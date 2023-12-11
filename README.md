@@ -38,9 +38,9 @@ Just use
 
 ## Tech
 
-SuperConvet's code is based on .net core technology (netcoreapp3.1, net5.0, net6.0, net7.0)
+SuperConvet's code is based on .net core technology (netcoreapp3.1, net5.0, net6.0, net7.0, net8)
 
-- [.NetCore3.1, .Net5, .Net6] - C# !
+- [.NetCore3.1, .Net5, .Net6, .Net7, .Net8] - C# !
 
 - [GitHub Code](https://github.com/SDN-X/SuperConvert) - SuperConvert Project
 
@@ -50,7 +50,7 @@ SuperConvet's code is based on .net core technology (netcoreapp3.1, net5.0, net6
 Run the command on your nuget package console .
 
 ```sh
-Install-Package SuperConvert -Version 1.0.4.3
+Install-Package SuperConvert -Version 1.0.4.9
 ```
 ## Or 
 
@@ -109,6 +109,9 @@ DataTable csvDt = ExcelConverter.CsvToDataTable(csvPath);
 ```
 | Version | README |
 | ------  | ------ |
+| 1.0.4.9 | https://www.nuget.org/packages/SuperConvert/1.0.4.9
+| 1.0.4.8 | https://www.nuget.org/packages/SuperConvert/1.0.4.8
+| 1.0.4.7 | https://www.nuget.org/packages/SuperConvert/1.0.4.7
 | 1.0.4.6 | https://www.nuget.org/packages/SuperConvert/1.0.4.6
 | 1.0.4.5 | https://www.nuget.org/packages/SuperConvert/1.0.4.5
 | 1.0.4.4 | https://www.nuget.org/packages/SuperConvert/1.0.4.4
