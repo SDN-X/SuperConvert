@@ -13,7 +13,7 @@ namespace SuperConvert.Files.Extensions
         /// <param name="fileName"></param>
         /// <returns></returns>
         public static string ToCsv(this DataTable dataTable, string path = "", string fileName = "excel") =>
-                 SuperHelper.DataTableToExcel(dataTable, path, fileName);
+                 SuperHelper.DataTableToCsv(dataTable, path, fileName, ',');
 
         /// <summary>
         /// Converting json To CSV
@@ -23,7 +23,7 @@ namespace SuperConvert.Files.Extensions
         /// <param name="fileName"></param>
         /// <returns></returns>
         public static string ToCsv(this string jsonData, string path = "", string fileName = "excel") =>
-             SuperHelper.JsonToExcel(jsonData, path, fileName);
+             SuperHelper.JsonToCsv(jsonData, path, fileName, ',');
         /// <summary>
         /// Converting Csv to json, receives the csv path and returns json object 
         /// </summary>

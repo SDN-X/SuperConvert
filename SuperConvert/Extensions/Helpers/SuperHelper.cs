@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -117,10 +117,10 @@ namespace SuperConvert.Extensions.Helpers
                 .Select(column => column.ColumnName)
                 .ToArray();
 
-            var header = string.Join(seperator, columnNames.Select(name => $"\"{name}\""));
+            var header = string.Join(seperator, columnNames.Select(EscapeCsvField));
             lines.Add(header);
             var valueLines = dataTable.AsEnumerable()
-                .Select(row => string.Join(seperator, row.ItemArray.Select(val => $"\"{val}\"")));
+                .Select(row => string.Join(seperator, row.ItemArray.Select(EscapeCsvField)));
             lines.AddRange(valueLines);
             string fullPath = Path.Combine(path, $"{fileName}.csv");
             File.WriteAllLines(fullPath, lines);
@@ -135,11 +135,11 @@ namespace SuperConvert.Extensions.Helpers
                 .Select(column => column.ColumnName)
                 .ToArray();
 
-            var header = string.Join(seperator, columnNames.Select(name => $"\"{name}\""));
+            var header = string.Join(seperator, columnNames.Select(EscapeCsvField));
             lines.Add(header);
 
             var valueLines = dataTable.AsEnumerable()
-                .Select(row => string.Join(seperator, row.ItemArray.Select(val => $"\"{val}\"")));
+                .Select(row => string.Join(seperator, row.ItemArray.Select(EscapeCsvField)));
             lines.AddRange(valueLines);
 
             string data = string.Join("\n", lines);
@@ -157,21 +157,24 @@ namespace SuperConvert.Extensions.Helpers
         internal static byte[] JsonToCsv(string json, char seperator) => DataTableToCsv(JsonToDataTable(json), seperator);
         internal static string ConvertCsvToJson(string filePath)
         {
-            var csv = new List<string[]>();
-            var lines = File.ReadAllLines(filePath);
+            var csvContent = File.ReadAllText(filePath);
+            var csvRows = ParseCsvRows(csvContent, ',');
+            if (csvRows.Count == 0)
+                return Serialize(new List<Dictionary<string, string>>());
 
-            foreach (string line in lines)
-                csv.Add(line.Split(','));
-
-            var properties = lines[0].Replace("\"", "").Split(',');
+            var properties = csvRows[0];
 
             var listObjResult = new List<Dictionary<string, string>>();
 
-            for (int i = 1; i < lines.Length; i++)
+            for (int i = 1; i < csvRows.Count; i++)
             {
                 var objResult = new Dictionary<string, string>();
+                var currentRow = csvRows[i];
                 for (int j = 0; j < properties.Length; j++)
-                    objResult.Add(properties[j], csv[i][j].Replace("\"", ""));
+                {
+                    var value = j < currentRow.Length ? currentRow[j] : string.Empty;
+                    objResult[properties[j]] = value;
+                }
 
                 listObjResult.Add(objResult);
             }
@@ -201,11 +204,89 @@ namespace SuperConvert.Extensions.Helpers
         /// <summary>
         /// Deserialize an from json string
         /// </summary>
-        private static T Deserialize<T>(string body) => JsonSerializer.Deserialize<T>(body);
+        private static T Deserialize<T>(string body) =>
+            JsonSerializer.Deserialize<T>(body) ?? throw new InvalidOperationException("Failed to deserialize JSON payload.");
         /// <summary>
         /// Serialize an object to json
         /// </summary>
         internal static string Serialize<T>(T item) => JsonSerializer.Serialize(item);
+
+        private static string EscapeCsvField(object? value)
+        {
+            var content = value?.ToString() ?? string.Empty;
+            return $"\"{content.Replace("\"", "\"\"")}\"";
+        }
+
+        private static List<string[]> ParseCsvRows(string content, char separator)
+        {
+            var rows = new List<string[]>();
+            var fields = new List<string>();
+            var fieldBuilder = new StringBuilder();
+            var inQuotes = false;
+
+            for (int i = 0; i < content.Length; i++)
+            {
+                var current = content[i];
+
+                if (inQuotes)
+                {
+                    if (current == '"')
+                    {
+                        var hasEscapedQuote = i + 1 < content.Length && content[i + 1] == '"';
+                        if (hasEscapedQuote)
+                        {
+                            fieldBuilder.Append('"');
+                            i++;
+                        }
+                        else
+                        {
+                            inQuotes = false;
+                        }
+                    }
+                    else
+                    {
+                        fieldBuilder.Append(current);
+                    }
+
+                    continue;
+                }
+
+                if (current == '"')
+                {
+                    inQuotes = true;
+                }
+                else if (current == separator)
+                {
+                    fields.Add(fieldBuilder.ToString());
+                    fieldBuilder.Clear();
+                }
+                else if (current == '\r' || current == '\n')
+                {
+                    fields.Add(fieldBuilder.ToString());
+                    fieldBuilder.Clear();
+                    rows.Add(fields.ToArray());
+                    fields.Clear();
+
+                    if (current == '\r' && i + 1 < content.Length && content[i + 1] == '\n')
+                        i++;
+                }
+                else
+                {
+                    fieldBuilder.Append(current);
+                }
+            }
+
+            if (inQuotes)
+                throw new FormatException("CSV format is invalid: unclosed quoted field.");
+
+            if (fieldBuilder.Length > 0 || fields.Count > 0)
+            {
+                fields.Add(fieldBuilder.ToString());
+                rows.Add(fields.ToArray());
+            }
+
+            return rows;
+        }
 
         internal static string ConvertJsonToXls(string jsonString, string fileName, string path) => ConvertDataTableToXls(JsonToDataTable(jsonString), fileName, path);
         internal static byte[] ConvertJsonToXls(string jsonString) => ConvertDataTableToXls(JsonToDataTable(jsonString));

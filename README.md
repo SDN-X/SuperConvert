@@ -1,132 +1,133 @@
-# Super Convert
-## _Make your data conversion_
+# SuperConvert
+## Make your data conversion simple
 
 [![BuildStatus](https://img.shields.io/github/workflow/status/SDN-X/SuperConvert/Build%20and%20Test)](https://github.com/SDN-X/SuperConvert/actions)
 [![codecov](https://codecov.io/gh/esamelzain/SuperConvert/branch/main/graph/badge.svg)](https://codecov.io/gh/esamelzain/SuperConvert)
 [![License](https://img.shields.io/github/license/SDN-X/SuperConvert)](https://github.com/SDN-X/SuperConvert/blob/master/LICENSE.txt)
 
+SuperConvert is a lightweight .NET library for converting between common data formats with a simple API.
 
-🚀 SuperConvert is the ultimate tool for data conversion in C#/.NET! It supports JSON, XML, CSV, XLS and much more! With SuperConvert, you can easily convert any data format to another with just a few lines of code. 💪
+## Packages
 
-📖 Its documentation provides clear and detailed explanations of all the methods and features available, making it easy to use and master. 🤓
+- `SuperConvert` (core conversions): [NuGet](https://www.nuget.org/packages/SuperConvert)
+- `SuperConvert.Files` (file conversion helpers): [NuGet](https://www.nuget.org/packages/SuperConvert.Files)
+- `SuperConvert.Abstraction` (DI-friendly service abstraction): [NuGet](https://www.nuget.org/packages/SuperConvert.Abstraction)
 
-💻 And if you're looking for more resources, the SuperConvert blog has plenty of articles on data conversion and best practices. 📰
+## What's new (SuperConvert)
 
-🔧 Don't miss out on the powerful features SuperConvert has to offer, such as encoding and decoding files to/from base64, converting between data formats with customizable options, and more! ⚙️
+### 1.0.5.2
 
-👍 Whether you're a seasoned developer or just starting out, SuperConvert is the perfect tool to simplify your data conversion tasks and improve your workflow. Give it a try today! 💻👨‍💻
+- Updated NuGet package icon (`electric-generator.png`).
+
+### 1.0.5.x
+
+- Fixed CSV escaping/unescaping issue for quote characters (`"`).
+- Export now escapes quotes as doubled quotes (`""`) in CSV fields.
+- Import now correctly parses quoted values and restores escaped quotes.
+- Added regression tests for CSV quote handling and quoted comma fields.
 
 ## Features
 
-- Convert Json to Datatable
-- Convert Datatable to Json
-- DateTime convert from Gregorian To Hijri
-- DateTime convert from Hijri To Gregorian
-- Json convert to Csv
-- DataTable convert to Csv
-- Csv convert to Json
-- Csv convert to DataTable
-- Json to Xls
-- Datatable to Xls
+- JSON to `DataTable`
+- `DataTable` to JSON
+- JSON to CSV / CSV to JSON
+- `DataTable` to CSV / CSV to `DataTable`
+- JSON to XLS / `DataTable` to XLS
+- Gregorian and Hijri date conversion
+- String and file Base64 conversion helpers
 
-- Excel sheets (XLS, XLSX) and other data containers/types is already here
-Just use 
+## Target frameworks
 
-```cs
- .ToXls() 
-```
+Current package targets:
 
-## Tech
-
-SuperConvet's code is based on .net core technology (netcoreapp3.1, net5.0, net6.0, net7.0, net8)
-
-- [.NetCore3.1, .Net5, .Net6, .Net7, .Net8] - C# !
-
-- [GitHub Code](https://github.com/SDN-X/SuperConvert) - SuperConvert Project
+- `netcoreapp3.1`
+- `net5.0`
+- `net6.0`
+- `net7.0`
+- `net8.0`
+- `net9.0`
+- `net10.0`
 
 ## Installation
 
+### Core package
 
-Run the command on your nuget package console .
-
-```sh
-Install-Package SuperConvert -Version 1.0.4.9
+```powershell
+Install-Package SuperConvert -Version 1.0.5.2
 ```
-## Or 
 
-Open your nuget package manager and type the name of 'SuperConvert' on the search
+### Files package
 
-## Usage 
-## Namespaces
+```powershell
+Install-Package SuperConvert.Files -Version 1.0.4.0
+```
+
+### Abstraction package
+
+```powershell
+Install-Package SuperConvert.Abstraction -Version 1.0.0.4
+```
+
+## Usage
+
+### Namespaces
+
 ```cs
-using SuperConvert.Extentions;
+using SuperConvert.Extensions;
 using System.Data;
 ```
-## Json to dataTable
+
+### JSON to DataTable
+
 ```cs
-string customers = "[{\"CompanayID\":\"k123\",\"Role\":\"Admin\",\"Country\":\"UK\",\"Asset\":\"HD\",\"incident\":null}, {\"CompanayID\":\"k234\",\"Role\":\"User\",\"Country\":\"US\",\"Asset\":\"HD12\",\"incident\":\"abc 1\"}]";
+string customers = "[{\"CompanyID\":\"k123\",\"Role\":\"Admin\",\"Country\":\"UK\"}]";
 DataTable dt = customers.ToDataTable("TableName");
 ```
-## DataTable to json
+
+### DataTable to JSON
+
 ```cs
 string json = dt.ToJson();
 ```
-## DateTime GregorianToHijri
-```cs
-DateTime timeNow = DateTime.Now;
-DateTime hijri = DateConverter.GregorianToHijri(timeNow);
-```
-## DateTime HijriToGregorian
-```cs
-DateTime gregorian = DateConverter.HijriToGregorian(hijri);
-```
-## Excels
-## Datatable to Csv
+
+### DataTable to CSV
+
 ```cs
 string path = string.Empty;
-string fileName = "DtToExcel";
+string fileName = "DtToCsv";
 string csvPath = dt.ToCsv(path, fileName);
 ```
-## Json To CSV
-```cs
-fileName = "JsonToExcel";
-path = string.Empty;
-string csvPath = json.ToCsv(path, fileName)
-```
-## Json To XLS
-```cs
-fileName = "JsonToExcel";
-path = string.Empty;
-string csvPath = json.ToXls(path, fileName)
-```
-## CSV To Json
-```cs
-string jsonFromCsv = ExcelConverter.CsvToJson(csvPath);
-```
-## CSV To Datatable
+
+### CSV to DataTable
+
 ```cs
 DataTable csvDt = ExcelConverter.CsvToDataTable(csvPath);
 ```
-| Version | README |
-| ------  | ------ |
-| 1.0.4.9 | https://www.nuget.org/packages/SuperConvert/1.0.4.9
-| 1.0.4.8 | https://www.nuget.org/packages/SuperConvert/1.0.4.8
-| 1.0.4.7 | https://www.nuget.org/packages/SuperConvert/1.0.4.7
-| 1.0.4.6 | https://www.nuget.org/packages/SuperConvert/1.0.4.6
-| 1.0.4.5 | https://www.nuget.org/packages/SuperConvert/1.0.4.5
-| 1.0.4.4 | https://www.nuget.org/packages/SuperConvert/1.0.4.4
-| 1.0.4.3 | https://www.nuget.org/packages/SuperConvert/1.0.4.3
-| 1.0.4.2 | https://www.nuget.org/packages/SuperConvert/1.0.4.2
-| 1.0.4.1 | [Deprecated]|
-| 1.0.4 | [Deprecated]|
-| 1.0.3.7 | https://www.nuget.org/packages/SuperConvert/1.0.3.7
-| 1.0.3.6 | https://www.nuget.org/packages/SuperConvert/1.0.3.6
-| 1.0.3.5 | https://www.nuget.org/packages/SuperConvert/1.0.3.5
-| 1.0.3.4 | https://www.nuget.org/packages/SuperConvert/1.0.3.4
-| 1.0.3.3 | https://www.nuget.org/packages/SuperConvert/1.0.3.3
-| 1.0.3.2 | https://www.nuget.org/packages/SuperConvert/1.0.3.2
-| 1.0.3.1 | [Deprecated] 
-| 1.0.3 | https://www.nuget.org/packages/SuperConvert/1.0.3
-| 1.0.2 | https://www.nuget.org/packages/SuperConvert/1.0.2
-| 1.0.1 | https://www.nuget.org/packages/SuperConvert/1.0.1
-| 1.0.0 | https://www.nuget.org/packages/SuperConvert/1.0.0
+
+### CSV quote behavior (example)
+
+Input text:
+
+```txt
+The "elephant" in the room.
+```
+
+CSV field output:
+
+```txt
+"The ""elephant"" in the room."
+```
+
+Import returns:
+
+```txt
+The "elephant" in the room.
+```
+
+## Latest versions
+
+| Package | Version | Link |
+| ------  | ------- | ---- |
+| SuperConvert | 1.0.5.2 | https://www.nuget.org/packages/SuperConvert/1.0.5.2 |
+| SuperConvert.Files | 1.0.4.0 | https://www.nuget.org/packages/SuperConvert.Files |
+| SuperConvert.Abstraction | 1.0.0.4 | https://www.nuget.org/packages/SuperConvert.Abstraction |

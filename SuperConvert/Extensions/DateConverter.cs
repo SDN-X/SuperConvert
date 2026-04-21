@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Globalization;
 
 namespace SuperConvert.Extensions
@@ -15,7 +15,7 @@ namespace SuperConvert.Extensions
             if (gregorianDate.Year >= 1900)
             {
                 var result = ConvertDateUsingCalender(gregorianDate, Enums.Calender.Hijri);
-                return DateTime.Parse(result);
+                return DateTime.ParseExact(result, "yyyy-MM-dd", CultureInfo.InvariantCulture);
             }
             return gregorianDate;
         }
@@ -29,7 +29,7 @@ namespace SuperConvert.Extensions
             if (hijriDate.Year < 1900)
             {
                 var result = ConvertDateUsingCalender(hijriDate, Enums.Calender.Gregorian);
-                return DateTime.Parse(result);
+                return DateTime.ParseExact(result, "yyyy-MM-dd", CultureInfo.InvariantCulture);
 
 
             }
@@ -68,19 +68,40 @@ namespace SuperConvert.Extensions
         /// </summary>
         /// <param name="birthDate"></param>
         /// <returns>bool</returns>
-        public static bool IsAgeGreaterThan(this DateTime birthDate, int age) => birthDate < DateTime.UtcNow.Subtract(new TimeSpan(365 * age, 0, 0, 0));
+        public static bool IsAgeGreaterThan(this DateTime birthDate, int age)
+        {
+            var today = DateTime.UtcNow.Date;
+            return CalculateAge(birthDate.Date, today) > age;
+        }
 
         /// <summary>
         /// Checks if current birthday's age is smaller than specified age
         /// </summary>
         /// <param name="birthDate"></param>
         /// <returns>bool</returns>
-        public static bool IsAgeLessThan(this DateTime birthDate, int age) => birthDate > DateTime.UtcNow.Subtract(new TimeSpan(365 * age, 0, 0, 0));
+        public static bool IsAgeLessThan(this DateTime birthDate, int age)
+        {
+            var today = DateTime.UtcNow.Date;
+            return CalculateAge(birthDate.Date, today) < age;
+        }
         /// <summary>
         /// Checks if current birthday's age is equals than specified age
         /// </summary>
         /// <param name="birthDate"></param>
         /// <returns>bool</returns>
-        public static bool IsAgeEqualsTo(this DateTime birthDate, int age) => age == DateTime.Now.Year - birthDate.Year;
+        public static bool IsAgeEqualsTo(this DateTime birthDate, int age)
+        {
+            var today = DateTime.UtcNow.Date;
+            return CalculateAge(birthDate.Date, today) == age;
+        }
+
+        private static int CalculateAge(DateTime birthDate, DateTime today)
+        {
+            var years = today.Year - birthDate.Year;
+            if (birthDate.Date > today.AddYears(-years))
+                years--;
+
+            return years;
+        }
     }
 }
