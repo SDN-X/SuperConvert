@@ -63,6 +63,6 @@ Stay tuned for more updates and enhancements coming in the next version!
 
 SuperConvert.Abstraction is a versatile library that simplifies data conversion tasks and enhances your .NET applications. By leveraging the Dependency Injection service and the **ISuperConvertExcelService** interface, you can seamlessly integrate data conversion capabilities into your projects. Get started today and experience the benefits of effortless data conversion!
 
-For more details, check out the [SuperConvert.Abstraction GitHub repository](https://github.com/SDN-X/SuperConvert).
+For more details, check out the [SuperConvert.Abstraction GitHub repository](https://github.com/SDN-X/SuperConvert) or try the free online tools at [https://superconvert.online/](https://superconvert.online/).
 
 Happy coding!

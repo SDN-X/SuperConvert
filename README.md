@@ -7,6 +7,8 @@
 
 SuperConvert is a lightweight .NET library for converting between common data formats with a simple API.
 
+**Website:** [https://superconvert.online/](https://superconvert.online/) — free online JSON, CSV, Excel, and XML converters powered by this library.
+
 ## Packages
 
 - `SuperConvert` (core conversions): [NuGet](https://www.nuget.org/packages/SuperConvert)
